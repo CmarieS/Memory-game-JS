@@ -1,0 +1,187 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  /* Chrome all / Safari all */
+  -moz-user-select: none;
+  /* Firefox all */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
+}
+.memory_game
+{
+  perspective: 1000px;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 2%;
+}
+.memory_game .memory_card
+{
+    position: relative;
+    width: 250px;
+    height: 200px;
+    margin: 10px;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform .5s;
+}
+.memory_card.flip {
+  transform: rotateY(180deg);
+}
+.memory_game .memory_card .front_img
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+.memory_game .memory_card .back_img
+{
+    width: 100%;
+    height: 100%;
+}
+.memory_game .memory_card .front_img , 
+.memory_game .memory_card .back_img
+{
+  backface-visibility: hidden;
+}
+.memory_game img
+{
+  width: 100%;
+  height: 50px;
+}
+.plateau {
+    display:none;
+}
+
+.memory_card:active {
+  transform: scale(0.97);
+  transition: transform .2s;
+}
+
+.back_img {
+  transform: rotateY(180deg);
+}
+.bloc_title
+{
+  color: white;
+}
+.bloc_title .select , .bloc_title .affichage
+{
+    text-align: center;
+}
+.bloc_title .affichage p 
+{
+    display: inline-block;
+    vertical-align: top;
+    padding-top:5%;
+}
+.bloc_title .affichage .title_pair
+{
+    width:20%; 
+}
+.bloc_title .affichage #pair
+{
+    width: 40%;
+}
+
+#bloc_end button
+{
+  margin-left: 47%;
+}
+
+/* FireWorks */
+
+#projectContainer {
+    background-color: transparent;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color:black;
+}
+#starSuperContainer {
+    width: 100vw;
+    height: 70vh;
+    position: relative;
+}
+#starContainer {
+    width: 100%;
+    height: 100%;
+}
+#starFade {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+}
+.star {
+    background-color: #fff;
+    border-radius: 50%;
+    position: fixed;
+}
+.fireworkContainer {
+    margin-top: -4px;
+    margin-bottom: -4px;
+    position: absolute;
+    display: inline-block;
+    -o-transition: all 1s linear, opacity 2s linear;
+    -moz-transition: all 1s linear, opacity 2s linear;
+    -webkit-transition: all 1s linear, opacity 2s linear;
+    -ms-transition: all 1s linear, opacity 2s linear;
+    transition: all 1s linear, opacity 2s linear;
+    bottom: 0;
+    border-radius: 50%;
+    -webkit-filter: blur(1px);
+    -moz-filter: blur(1px);
+    -ms-filter: blur(1px);
+    -o-filter: blur(1px);
+    filter: blur(1px);
+}
+.fireworkContainer * {
+    -o-transition: all .8s linear, opacity .1s linear;
+    -moz-transition: all .8s linear, opacity .1s linear;
+    -webkit-transition: all .8s linear, opacity .1s linear;
+    -ms-transition: all .8s linear, opacity .1s linear;
+    transition: all .8s linear, opaciyt .1s linear;
+    position: absolute;
+    width: 0;
+    height: 0;
+    -o-transform-origin: bottom center;
+    -moz-transform-origin: bottom center;
+    -webkit-transform-origin: bottom center;
+    -ms-transform-origin: bottom center;
+    transform-origin: bottom center;
+}
+#fireworksContainer {
+    position: fixed;
+    bottom: -100px;
+    display: table;
+    left: 10px;
+}
+
+.light {
+    border-radius: 50%;
+    opacity: .4;
+    -webkit-filter: blur(40px);
+    -o-filter: blur(40px);
+    -moz-filter: blur(40px);
+    -ms-filter: blur(40px);
+    filter: blur(add=0, direction=300, strength=10);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
