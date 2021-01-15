@@ -26,7 +26,7 @@ function buttonSelect() {
         var i;
         for (i = 0; i < x.length; i++) {
             x[i].style.display = 'none';
-            if (x[i].id != choice_plat)
+            if (x[i].id != choice_game)
             {
                 document.getElementById(x[i].id).classList.remove("open");
             }
