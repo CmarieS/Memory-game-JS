@@ -53,7 +53,7 @@
   width: 100%;
   height: 50px;
 }
-.plateau {
+.gameBord {
     display:none;
 }
 
@@ -69,21 +69,21 @@
 {
   color: white;
 }
-.bloc_title .select , .bloc_title .affichage
+.bloc_title .select , .bloc_title .display
 {
     text-align: center;
 }
-.bloc_title .affichage p 
+.bloc_title .display p 
 {
     display: inline-block;
     vertical-align: top;
     padding-top:5%;
 }
-.bloc_title .affichage .title_pair
+.bloc_title .display .title_pair
 {
     width:20%; 
 }
-.bloc_title .affichage #pair
+.bloc_title .display #pair
 {
     width: 40%;
 }
@@ -95,14 +95,6 @@
 
 /* FireWorks */
 
-#projectContainer {
-    background-color: transparent;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: none;
-}
 html, body {
     margin: 0;
     padding: 0;
@@ -111,7 +103,15 @@ html, body {
     overflow: hidden;
     background-color:black;
 }
-#starSuperContainer {
+#winContainer {
+    background-color: transparent;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+}
+#starWinContainer {
     width: 100vw;
     height: 70vh;
     position: relative;
@@ -170,18 +170,136 @@ html, body {
     display: table;
     left: 10px;
 }
-
 .light {
-    border-radius: 50%;
-    opacity: .4;
-    -webkit-filter: blur(40px);
-    -o-filter: blur(40px);
-    -moz-filter: blur(40px);
-    -ms-filter: blur(40px);
-    filter: blur(add=0, direction=300, strength=10);
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+  border-radius: 50%;
+  opacity: .4;
+  -webkit-filter: blur(40px);
+  -o-filter: blur(40px);
+  -moz-filter: blur(40px);
+  -ms-filter: blur(40px);
+  filter: blur(add=0, direction=300, strength=10);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
+
+/* Game Over */
+body {background: transparent;}
+
+@-webkit-keyframes animacao1 { 0% {background: #D62623;}
+50% {background: #EE3430;}
+100% {background: #FB3733;} }
+
+@-moz-keyframes animacao1 { 0% {background: #D62623;}
+50% {background: #EE3430;}
+100% {background: #FB3733;} }
+
+@keyframes animacao1 { 0% {background: #D62623;}
+50% {background: #EE3430;}
+100% {background: #FB3733;} }
+
+#blocGameover 
+{
+  border-radius: 40px;
+  animation-name: animacao1;
+  animation-duration: 1s;
+  animation-timing-function:  linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  display:none;
+  position: absolute;
+  top: 10%;
+  width: 100%;
+  height: 650px;
+}
+
+.first_message 
+{
+  height: auto;
+  padding-top: 60px;
+  background: none;
+}
+
+.first_message p
+{
+
+  font-size: 7.2em;
+  font-family: 'Black Ops One', cursive;
+  line-height: 120px;
+  text-align: center;
+  text-shadow: 5px 5px #000000;
+  color: #ffffff;
+}
+
+.second_message	
+{
+  height: auto;
+}
+
+.second_message p 
+{
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  font-family: corbel;
+  color: #ffffff;
+  text-shadow: 2.5px 2.5px #000000;
+}
+.reload_bloc
+{
+  text-align: center;
+}
+
+.reload_bloc button 
+{
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: corbel;
+  color: #000000;
+  text-decoration: none;
+  padding: 25px 110px 25px 110px;
+  border: 1px solid #000000;
+  border-radius: 20px;
+  background: #ffffff;
+}
+
+@-webkit-keyframes animacao2 {
+  from {-webkit-transform: scale(1);} 
+  to {-webkit-transform: scale(1.2);} 
+}
+
+@-moz-keyframes animacao2 {
+  from {-moz-transform: scale(1);} 
+  to {-moz-transform: scale(1.1);} 
+}
+
+@keyframes animacao2 { 
+  from {transform: scale(1);} 
+  to {transform: scale(1.1);} 
+}
+
+.reload_bloc button:hover 
+{
+    -webkit-animation-name: animacao2;
+		-webkit-animation-duration: 0.8s;
+		-webkit-animation-timing-function:  linear;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-direction: alternate;
+
+		-moz-animation-name: animacao2;
+		-moz-animation-duration: 0.8s;
+		-moz-animation-timing-function:  linear;
+		-moz-animation-iteration-count: infinite;
+		-moz-animation-direction: alternate;
+
+		animation-name: animacao2;
+		animation-duration: 0.8s;
+		animation-timing-function:  linear;
+		animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+

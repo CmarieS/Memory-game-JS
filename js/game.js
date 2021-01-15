@@ -1,21 +1,22 @@
 function buttonSelect() {
-    document.getElementById("projectContainer").style.display = "none";
+    var timer = 0;
+    document.getElementById("winContainer").style.display = "none";
     // Récupération de l'index du <option> choisi pour la selection du plateau
-    select_plateau = document.getElementById("select_plateau");
-    choice_plat = select_plateau.value;  
+    select_gameBord = document.getElementById("select_gameBord");
+    choice_game = select_gameBord.value;  
 
     // Récupération de l'index du <option> choisi pour les images
     select_picture = document.getElementById("select_picture");
     choice_picture = select_picture.value;
-    if (choice_picture == "null" && choice_plat == "null")
+    if (choice_picture == "null" && choice_game == "null")
     {
         alert("Veuillez choisir votre plateau et vos images");
     }
-    else if (choice_picture == "null" && choice_plat != "null")
+    else if (choice_picture == "null" && choice_game != "null")
     {
         alert("Veuillez choisir vos images");
     }
-    else if (choice_plat == "null" && choice_picture != "null")
+    else if (choice_game == "null" && choice_picture != "null")
     {
         alert("Veuillez choisir votre plateau");
     }
@@ -30,39 +31,42 @@ function buttonSelect() {
                 document.getElementById(x[i].id).classList.remove("open");
             }
         }
-        document.getElementById(choice_plat).style.display = "block";
-        document.getElementById(choice_plat).classList.add("open");
+        document.getElementById(choice_game).style.display = "block";
+        document.getElementById(choice_game).classList.add("open");
         
-        if (choice_plat == 3)
+        if (choice_game == 3)
         {
+            timer = 60000;
             document.getElementById("pair").innerHTML = "4";
             var a = [1, 2, 3, 1, 2, 3, 4, 4]
                 .map(p => [p, Math.random()])
                 .sort((a, b) => a[1] - b[1])
                 .map(p => p[0])
         }
-        else if (choice_plat == 4)
+        else if (choice_game == 4)
         {
+            timer = 120000;
             document.getElementById("pair").innerHTML = "6";
             var a = [1,1,2,2,3,3,4,4,5,5,6,6]
                 .map(p => [p, Math.random()])
                 .sort((a, b) => a[1] - b[1])
                 .map(p => p[0])
         }
+        setTimeout(end, timer);
 
         var pics = document.getElementsByTagName("img");
         var picsTab = new Array();
 
         for (let i = 0; i < pics.length; i++) 
         {
-            if (pics[i].id == "imgTree" && choice_plat == 3)
+            if (pics[i].id == "imgTree" && choice_game == 3)
             {
                 picsTab.push(pics[i]);
                 for (let j = 0; j < picsTab.length; j++) {
                     pics[i].src = 'ressources/' + choice_picture +"/spr"+ a[j] + '.jpg';
                 }
             }
-            else if (pics[i].id == "imgFour" && choice_plat == 4)
+            else if (pics[i].id == "imgFour" && choice_game == 4)
             {
                 picsTab.push(pics[i]);
                 for (let j = 0; j < picsTab.length; j++) {
@@ -73,7 +77,15 @@ function buttonSelect() {
     } 
 }
 function buttonReload(){
-    document.getElementById("projectContainer").style.display = "none";
+    document.getElementById("winContainer").style.display = "none";
+    document.getElementById("blocGameover").style.display = "none";
     window.location.reload();
+}
+function end()
+{
+    if (document.getElementById("winContainer").style.display != "block")
+    {
+        document.getElementById("blocGameover").style.display = "block";
+    }
 }
 

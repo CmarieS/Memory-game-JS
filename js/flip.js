@@ -31,7 +31,7 @@ function disableCards() {
     var new_value = pair_text - 1;
     document.getElementById("pair").innerHTML = new_value;
     if (new_value == "0") {
-        document.getElementById("projectContainer").style.display = "block";
+        document.getElementById("winContainer").style.display = "block";
     }
     resetBoard();
 }
