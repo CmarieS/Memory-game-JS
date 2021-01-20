@@ -1,5 +1,6 @@
 function buttonSelect() {
     var timer = 0;
+    var countDown = 0;
     document.getElementById("winContainer").style.display = "none";
     // Récupération de l'index du <option> choisi pour la selection du plateau
     select_gameBord = document.getElementById("select_gameBord");
@@ -37,6 +38,7 @@ function buttonSelect() {
         if (choice_game == 3)
         {
             timer = 60000;
+            countDown = 1;
             document.getElementById("pair").innerHTML = "4";
             var a = [1, 2, 3, 1, 2, 3, 4, 4]
                 .map(p => [p, Math.random()])
@@ -46,6 +48,7 @@ function buttonSelect() {
         else if (choice_game == 4)
         {
             timer = 120000;
+            countDown = 2;
             document.getElementById("pair").innerHTML = "6";
             var a = [1,1,2,2,3,3,4,4,5,5,6,6]
                 .map(p => [p, Math.random()])
@@ -53,6 +56,7 @@ function buttonSelect() {
                 .map(p => p[0])
         }
         setTimeout(end, timer);
+        countdown("countdown", countDown, 0);
 
         var pics = document.getElementsByTagName("img");
         var picsTab = new Array();
@@ -87,5 +91,30 @@ function end()
     {
         document.getElementById("blocGameover").style.display = "block";
     }
+}
+function countdown(elementName, minutes, seconds) {
+    var element, endTime, hours, mins, msLeft, time;
+
+    function twoDigits(n) {
+        return (n <= 9 ? "0" + n : n);
+    }
+    function updateTimer() {
+        msLeft = endTime - (+new Date);
+        if (msLeft < 1000) {
+            element.innerHTML = "0:00";
+        } else {
+            time = new Date(msLeft);
+            hours = time.getUTCHours();
+            mins = time.getUTCMinutes();
+            element.innerHTML = (hours ? hours + ':' + twoDigits(mins) : mins) + ':' + twoDigits(time.getUTCSeconds());
+            if (document.getElementById("winContainer").style.display != "block")
+            {
+                setTimeout(updateTimer, time.getUTCMilliseconds() + 500);
+            }
+        }
+    }
+    element = document.getElementById(elementName);
+    endTime = (+new Date) + 1000 * (60 * minutes + seconds) + 500;
+    updateTimer();
 }
 

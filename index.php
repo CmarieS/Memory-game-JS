@@ -22,11 +22,15 @@
                 <option value="noel">Noêl</option>
             </select>
             <button class="button_select" onclick="buttonSelect()">Sélectionner</button>
-            <button class="button_select" onclick="buttonReload()">Reload</button>
+            <button class="button_select" onclick="buttonReload()">Relancer</button>
         </div>
-        <div class="display col-lg-6">
+        <div class="bloc_pair col-lg-4">
             <p class="title_pair">Nombre de paire(s) : </p>
             <p id="pair"></p>
+        </div>
+        <div class="bloc_countDown col-lg-2">
+            <p class="title-countDown">Compteur :</p>
+            <div id="countdown"></div>
         </div>
     </div>
     <table id="3" class="memory_game tree gameBord">
@@ -65,15 +69,12 @@
             <p> GAME </p>
             <p> OVER </p>
         </div>
-
         <div class="second_message">
             <p> Trop long! </p>
         </div>
-
         <div class="reload_bloc">
-            <button onclick="buttonReload()">Reload</button>
+            <button onclick="buttonReload()">Relancer</button>
         </div>
-
     </div>
 </body>
 

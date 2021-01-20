@@ -69,21 +69,28 @@
 {
   color: white;
 }
-.bloc_title .select , .bloc_title .display
+.bloc_title .select , .bloc_title .bloc_pair , .bloc_title .bloc_countDown
 {
     text-align: center;
 }
-.bloc_title .display p 
+.bloc_title .bloc_pair p , .bloc_title .bloc_countDown p
 {
     display: inline-block;
     vertical-align: top;
+}
+.bloc_title .bloc_pair p
+{
     padding-top:5%;
 }
-.bloc_title .display .title_pair
+.bloc_title .bloc_countDown p
 {
-    width:20%; 
+    padding-top:11%;
 }
-.bloc_title .display #pair
+.bloc_title .bloc_pair .title_pair , .bloc_title .bloc_countDown .title_countDown
+{
+    width:30%; 
+}
+.bloc_title .bloc_pair #pair , .bloc_title .bloc_countDown #countDown
 {
     width: 40%;
 }
@@ -186,7 +193,6 @@ html, body {
 }
 
 /* Game Over */
-body {background: transparent;}
 
 @-webkit-keyframes animacao1 { 0% {background: #D62623;}
 50% {background: #EE3430;}
@@ -232,12 +238,10 @@ body {background: transparent;}
   text-shadow: 5px 5px #000000;
   color: #ffffff;
 }
-
 .second_message	
 {
   height: auto;
 }
-
 .second_message p 
 {
   text-align: center;
@@ -251,7 +255,6 @@ body {background: transparent;}
 {
   text-align: center;
 }
-
 .reload_bloc button 
 {
   text-align: center;
@@ -300,6 +303,18 @@ body {background: transparent;}
 		animation-timing-function:  linear;
 		animation-iteration-count: infinite;
     animation-direction: alternate;
+}
+
+/* CountDown */
+
+#countdown {
+    display:inline;
+    padding: 5px;
+    color: #ffffff;
+    font-family: Verdana, sans-serif, Arial;
+    font-size: 40px;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 
