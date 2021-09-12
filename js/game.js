@@ -118,3 +118,23 @@ function countdown(elementName, minutes, seconds) {
     updateTimer();
 }
 
+function selectShowDisplay()
+{
+    
+    if (document.getElementById("select").classList.contains("selectDisplay"))
+    {
+        document.getElementById("select").classList.remove("selectDisplay");
+        document.getElementById('close_button').innerHTML = "->";
+        document.getElementById("tabGame").classList.add("col-lg-6");
+        document.getElementById("select").classList.remove("col-lg-12");
+    }
+    else
+    {
+        document.getElementById("select").classList.add("selectDisplay");
+        document.getElementById('close_button').innerHTML = "+";
+        document.getElementById("tabGame").classList.remove("col-lg-6");
+        document.getElementById("select").classList.add("col-lg-12");
+    }
+    
+}
+

@@ -10,176 +10,177 @@
   /* IE 10+ */
   user-select: none;
 }
-.memory_game
-{
+.memory_game {
   perspective: 1000px;
   margin-left: 25%;
   margin-right: 25%;
   margin-top: 2%;
 }
-.memory_game .memory_card
-{
-    position: relative;
-    width: 250px;
-    height: 200px;
-    margin: 10px;
-    transform: scale(1);
-    transform-style: preserve-3d;
-    transition: transform .5s;
+.memory_game .memory_card {
+  position: relative;
+  width: 250px;
+  height: 200px;
+  margin: 10px;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
 }
 .memory_card.flip {
   transform: rotateY(180deg);
 }
-.memory_game .memory_card .front_img
-{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
+.memory_game .memory_card .front_img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }
-.memory_game .memory_card .back_img
-{
-    width: 100%;
-    height: 100%;
+.memory_game .memory_card .back_img {
+  width: 100%;
+  height: 100%;
 }
-.memory_game .memory_card .front_img , 
-.memory_game .memory_card .back_img
-{
+.memory_game .memory_card .front_img,
+.memory_game .memory_card .back_img {
   backface-visibility: hidden;
 }
-.memory_game img
-{
+.memory_game img {
   width: 100%;
   height: 50px;
 }
 .gameBord {
-    display:none;
+  display: none;
 }
 
 .memory_card:active {
   transform: scale(0.97);
-  transition: transform .2s;
+  transition: transform 0.2s;
 }
 
 .back_img {
   transform: rotateY(180deg);
 }
-.bloc_title
-{
+.bloc_title {
   color: white;
 }
-.bloc_title .select , .bloc_title .bloc_pair , .bloc_title .bloc_countDown
-{
-    text-align: center;
+.bloc_title .select,
+.bloc_title .bloc_pair,
+.bloc_title .bloc_countDown {
+  text-align: center;
 }
-.bloc_title .bloc_pair p , .bloc_title .bloc_countDown p
-{
-    display: inline-block;
-    vertical-align: top;
+.bloc_title .bloc_pair p,
+.bloc_title .bloc_countDown p {
+  display: inline-block;
+  vertical-align: top;
 }
-.bloc_title .bloc_pair p
-{
-    padding-top:5%;
+.bloc_title .bloc_pair p {
+  padding-top: 5%;
 }
-.bloc_title .bloc_countDown p
-{
-    padding-top:11%;
+.bloc_title .bloc_countDown p {
+  padding-top: 11%;
 }
-.bloc_title .bloc_pair .title_pair , .bloc_title .bloc_countDown .title_countDown
-{
-    width:30%; 
+.bloc_title .bloc_pair .title_pair,
+.bloc_title .bloc_countDown .title_countDown {
+  width: 30%;
 }
-.bloc_title .bloc_pair #pair , .bloc_title .bloc_countDown #countDown
-{
-    width: 40%;
+.bloc_title .bloc_pair #pair,
+.bloc_title .bloc_countDown #countDown {
+  width: 40%;
 }
 
-#bloc_end button
-{
+#bloc_end button {
   margin-left: 47%;
+}
+
+.close_button {
+  background-color: transparent;
+  border-color: transparent;
+  color: white;
+}
+.selectGame .selectDisplay {
+  display: none;
 }
 
 /* FireWorks */
 
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    background-color:black;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: black;
 }
 #winContainer {
-    background-color: transparent;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: none;
+  background-color: transparent;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
 }
 #starWinContainer {
-    width: 100vw;
-    height: 70vh;
-    position: relative;
+  width: 100vw;
+  height: 70vh;
+  position: relative;
 }
 #starContainer {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 #starFade {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
 }
 .star {
-    background-color: #fff;
-    border-radius: 50%;
-    position: fixed;
+  background-color: #fff;
+  border-radius: 50%;
+  position: fixed;
 }
 .fireworkContainer {
-    margin-top: -4px;
-    margin-bottom: -4px;
-    position: absolute;
-    display: inline-block;
-    -o-transition: all 1s linear, opacity 2s linear;
-    -moz-transition: all 1s linear, opacity 2s linear;
-    -webkit-transition: all 1s linear, opacity 2s linear;
-    -ms-transition: all 1s linear, opacity 2s linear;
-    transition: all 1s linear, opacity 2s linear;
-    bottom: 0;
-    border-radius: 50%;
-    -webkit-filter: blur(1px);
-    -moz-filter: blur(1px);
-    -ms-filter: blur(1px);
-    -o-filter: blur(1px);
-    filter: blur(1px);
+  margin-top: -4px;
+  margin-bottom: -4px;
+  position: absolute;
+  display: inline-block;
+  -o-transition: all 1s linear, opacity 2s linear;
+  -moz-transition: all 1s linear, opacity 2s linear;
+  -webkit-transition: all 1s linear, opacity 2s linear;
+  -ms-transition: all 1s linear, opacity 2s linear;
+  transition: all 1s linear, opacity 2s linear;
+  bottom: 0;
+  border-radius: 50%;
+  -webkit-filter: blur(1px);
+  -moz-filter: blur(1px);
+  -ms-filter: blur(1px);
+  -o-filter: blur(1px);
+  filter: blur(1px);
 }
 .fireworkContainer * {
-    -o-transition: all .8s linear, opacity .1s linear;
-    -moz-transition: all .8s linear, opacity .1s linear;
-    -webkit-transition: all .8s linear, opacity .1s linear;
-    -ms-transition: all .8s linear, opacity .1s linear;
-    transition: all .8s linear, opaciyt .1s linear;
-    position: absolute;
-    width: 0;
-    height: 0;
-    -o-transform-origin: bottom center;
-    -moz-transform-origin: bottom center;
-    -webkit-transform-origin: bottom center;
-    -ms-transform-origin: bottom center;
-    transform-origin: bottom center;
+  -o-transition: all 0.8s linear, opacity 0.1s linear;
+  -moz-transition: all 0.8s linear, opacity 0.1s linear;
+  -webkit-transition: all 0.8s linear, opacity 0.1s linear;
+  -ms-transition: all 0.8s linear, opacity 0.1s linear;
+  transition: all 0.8s linear, opaciyt 0.1s linear;
+  position: absolute;
+  width: 0;
+  height: 0;
+  -o-transform-origin: bottom center;
+  -moz-transform-origin: bottom center;
+  -webkit-transform-origin: bottom center;
+  -ms-transform-origin: bottom center;
+  transform-origin: bottom center;
 }
 #fireworksContainer {
-    position: fixed;
-    bottom: -100px;
-    display: table;
-    left: 10px;
+  position: fixed;
+  bottom: -100px;
+  display: table;
+  left: 10px;
 }
 .light {
   border-radius: 50%;
-  opacity: .4;
+  opacity: 0.4;
   -webkit-filter: blur(40px);
   -o-filter: blur(40px);
   -moz-filter: blur(40px);
@@ -194,56 +195,74 @@ html, body {
 
 /* Game Over */
 
-@-webkit-keyframes animacao1 { 0% {background: #D62623;}
-50% {background: #EE3430;}
-100% {background: #FB3733;} }
+@-webkit-keyframes animacao1 {
+  0% {
+    background: #d62623;
+  }
+  50% {
+    background: #ee3430;
+  }
+  100% {
+    background: #fb3733;
+  }
+}
 
-@-moz-keyframes animacao1 { 0% {background: #D62623;}
-50% {background: #EE3430;}
-100% {background: #FB3733;} }
+@-moz-keyframes animacao1 {
+  0% {
+    background: #d62623;
+  }
+  50% {
+    background: #ee3430;
+  }
+  100% {
+    background: #fb3733;
+  }
+}
 
-@keyframes animacao1 { 0% {background: #D62623;}
-50% {background: #EE3430;}
-100% {background: #FB3733;} }
+@keyframes animacao1 {
+  0% {
+    background: #d62623;
+  }
+  50% {
+    background: #ee3430;
+  }
+  100% {
+    background: #fb3733;
+  }
+}
 
-#blocGameover 
-{
+#blocGameover {
   border-radius: 40px;
   animation-name: animacao1;
   animation-duration: 1s;
-  animation-timing-function:  linear;
+  animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
-  display:none;
+  display: none;
   position: absolute;
   top: 10%;
   width: 100%;
   height: 650px;
 }
 
-.first_message 
-{
+.first_message {
   height: auto;
   padding-top: 60px;
   background: none;
 }
 
-.first_message p
-{
-
+.first_message p {
   font-size: 7.2em;
-  font-family: 'Black Ops One', cursive;
+  font-family: "Black Ops One", cursive;
   line-height: 120px;
   text-align: center;
   text-shadow: 5px 5px #000000;
   color: #ffffff;
 }
-.second_message	
-{
+.second_message {
   height: auto;
 }
-.second_message p 
-{
+.second_message p {
   text-align: center;
   font-size: 40px;
   font-weight: bold;
@@ -251,12 +270,10 @@ html, body {
   color: #ffffff;
   text-shadow: 2.5px 2.5px #000000;
 }
-.reload_bloc
-{
+.reload_bloc {
   text-align: center;
 }
-.reload_bloc button 
-{
+.reload_bloc button {
   text-align: center;
   font-size: 30px;
   font-weight: bold;
@@ -270,51 +287,60 @@ html, body {
 }
 
 @-webkit-keyframes animacao2 {
-  from {-webkit-transform: scale(1);} 
-  to {-webkit-transform: scale(1.2);} 
+  from {
+    -webkit-transform: scale(1);
+  }
+  to {
+    -webkit-transform: scale(1.2);
+  }
 }
 
 @-moz-keyframes animacao2 {
-  from {-moz-transform: scale(1);} 
-  to {-moz-transform: scale(1.1);} 
+  from {
+    -moz-transform: scale(1);
+  }
+  to {
+    -moz-transform: scale(1.1);
+  }
 }
 
-@keyframes animacao2 { 
-  from {transform: scale(1);} 
-  to {transform: scale(1.1);} 
+@keyframes animacao2 {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
 }
 
-.reload_bloc button:hover 
-{
-    -webkit-animation-name: animacao2;
-		-webkit-animation-duration: 0.8s;
-		-webkit-animation-timing-function:  linear;
-		-webkit-animation-iteration-count: infinite;
-		-webkit-animation-direction: alternate;
+.reload_bloc button:hover {
+  -webkit-animation-name: animacao2;
+  -webkit-animation-duration: 0.8s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
 
-		-moz-animation-name: animacao2;
-		-moz-animation-duration: 0.8s;
-		-moz-animation-timing-function:  linear;
-		-moz-animation-iteration-count: infinite;
-		-moz-animation-direction: alternate;
+  -moz-animation-name: animacao2;
+  -moz-animation-duration: 0.8s;
+  -moz-animation-timing-function: linear;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-direction: alternate;
 
-		animation-name: animacao2;
-		animation-duration: 0.8s;
-		animation-timing-function:  linear;
-		animation-iteration-count: infinite;
-    animation-direction: alternate;
+  animation-name: animacao2;
+  animation-duration: 0.8s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 /* CountDown */
 
 #countdown {
-    display:inline;
-    padding: 5px;
-    color: #ffffff;
-    font-family: Verdana, sans-serif, Arial;
-    font-size: 40px;
-    font-weight: bold;
-    text-decoration: none;
+  display: inline;
+  padding: 5px;
+  color: #ffffff;
+  font-family: Verdana, sans-serif, Arial;
+  font-size: 40px;
+  font-weight: bold;
+  text-decoration: none;
 }
-
-

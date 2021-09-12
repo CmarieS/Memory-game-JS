@@ -8,9 +8,10 @@
 </heah>
 
 <body>
-    <div class="row bloc_title col-lg-12">
-        <div class="select col-lg-6">
-            <h1 class="title">Sélection du plateau/catégorie d'images</h1>
+    <button id="close_button" class="close_button col-lg-1" onclick="selectShowDisplay()">-></button>
+    <div class="row selectGame col-lg-12">
+        <div id="select" class="select col-lg-6">
+            <h1 class="title col-lg-11">Sélection du plateau/catégorie d'images</h1>
             <select name="select_gameBord" id="select_gameBord" class="select_gameBord">
                 <option value="null">Sélectionner votre grille</option>
                 <option value="3">2*4</option>
@@ -24,39 +25,45 @@
             <button class="button_select" onclick="buttonSelect()">Sélectionner</button>
             <button class="button_select" onclick="buttonReload()">Relancer</button>
         </div>
-        <div class="bloc_pair col-lg-4">
-            <p class="title_pair">Nombre de paire(s) : </p>
-            <p id="pair"></p>
+        <div id="tabGame" class="col-lg-6">
+            <div class="row bloc_title col-lg-12">
+                <div class="bloc_pair col-lg-6">
+                    <p class="title_pair">Nombre de paire(s) : </p>
+                    <p id="pair"></p>
+                </div>
+                <div class="bloc_countDown col-lg-6">
+                    <p class="title-countDown">Compteur :</p>
+                    <div id="countdown"></div>
+                </div>
+            </div>
+            <table id="3" class="memory_game tree gameBord">
+                <?php for ($j = 1; $j <= 2; $j++) { ?>
+                    <tr>
+                        <?php for ($k = 1; $k <= 4; $k++) { ?>
+                            <td class="memory_card">
+                                <img class="front_img" src="ressources/spr0.jpg">
+                                <img id="imgTree" class="back_img" src="ressources/spr0.jpg">
+                            </td>
+                        <?php } ?>
+                    </tr>
+                <?php } ?>
+            </table>
+            <table id="4" class="memory_game four gameBord">
+                <?php for ($j = 1; $j <= 3; $j++) { ?>
+                    <tr>
+                        <?php for ($k = 1; $k <= 4; $k++) { ?>
+                            <td class="memory_card">
+                                <img class="front_img" src="ressources/spr0.jpg">
+                                <img id="imgFour" class="back_img" src="ressources/spr0.jpg">
+                            </td>
+                        <?php } ?>
+                    </tr>
+                <?php } ?>
+            </table>
+
         </div>
-        <div class="bloc_countDown col-lg-2">
-            <p class="title-countDown">Compteur :</p>
-            <div id="countdown"></div>
-        </div>
+
     </div>
-    <table id="3" class="memory_game tree gameBord">
-        <?php for ($j = 1; $j <= 2; $j++) { ?>
-            <tr>
-                <?php for ($k = 1; $k <= 4; $k++) { ?>
-                    <td class="memory_card">
-                        <img class="front_img" src="ressources/spr0.jpg">
-                        <img id="imgTree" class="back_img" src="ressources/spr0.jpg">
-                    </td>
-                <?php } ?>
-            </tr>
-        <?php } ?>
-    </table>
-    <table id="4" class="memory_game four gameBord">
-        <?php for ($j = 1; $j <= 3; $j++) { ?>
-            <tr>
-                <?php for ($k = 1; $k <= 4; $k++) { ?>
-                    <td class="memory_card">
-                        <img class="front_img" src="ressources/spr0.jpg">
-                        <img id="imgFour" class="back_img" src="ressources/spr0.jpg">
-                    </td>
-                <?php } ?>
-            </tr>
-        <?php } ?>
-    </table>
     <div id="winContainer">
         <div id="starWinContainer">
             <div id="starContainer"></div>
