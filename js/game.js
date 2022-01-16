@@ -35,31 +35,24 @@ function buttonSelect() {
         document.getElementById(choice_game).style.display = "block";
         document.getElementById(choice_game).classList.add("open");
         
-        if (choice_game == 3)
+        if(choice_game == 3)
         {
-            timer = 60000;
-            countDown = 1;
-            document.getElementById("pair").innerHTML = "4";
             var a = [1, 2, 3, 1, 2, 3, 4, 4]
-                .map(p => [p, Math.random()])
-                .sort((a, b) => a[1] - b[1])
-                .map(p => p[0])
+                    .map(p => [p, Math.random()])
+                    .sort((a, b) => a[1] - b[1])
+                    .map(p => p[0])
         }
-        else if (choice_game == 4)
+        else if(choice_game == 4)
         {
-            timer = 120000;
-            countDown = 2;
-            document.getElementById("pair").innerHTML = "6";
             var a = [1,1,2,2,3,3,4,4,5,5,6,6]
-                .map(p => [p, Math.random()])
-                .sort((a, b) => a[1] - b[1])
-                .map(p => p[0])
+                    .map(p => [p, Math.random()])
+                    .sort((a, b) => a[1] - b[1])
+                    .map(p => p[0])
         }
-        setTimeout(end, timer);
-        countdown("countdown", countDown, 0);
-
-        var pics = document.getElementsByTagName("img");
-        var picsTab = new Array();
+        pair(choice_game)
+    
+        let pics = document.getElementsByTagName("img");
+        let picsTab = new Array();
 
         for (let i = 0; i < pics.length; i++) 
         {
@@ -81,6 +74,7 @@ function buttonSelect() {
     } 
 }
 function buttonReload(){
+
     document.getElementById("winContainer").style.display = "none";
     document.getElementById("blocGameover").style.display = "none";
     window.location.reload();
@@ -93,6 +87,7 @@ function end()
     }
 }
 function countdown(elementName, minutes, seconds) {
+    
     var element, endTime, hours, mins, msLeft, time;
 
     function twoDigits(n) {
@@ -138,3 +133,23 @@ function selectShowDisplay()
     
 }
 
+function pair(choice_game)
+{
+    if (choice_game == 3)
+    {
+        timer = 60000;
+        countDown = 1;
+         document.getElementById("pair").innerHTML = "4";
+            
+    }
+    else if (choice_game == 4)
+    {
+        timer = 120000;
+        countDown = 2;
+        document.getElementById("pair").innerHTML = "6";
+            
+
+    }
+    setTimeout(end, timer);
+    countdown("countdown", countDown, 0);
+}
