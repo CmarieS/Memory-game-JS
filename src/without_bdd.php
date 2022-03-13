@@ -20,9 +20,8 @@
                 <p class="title_pair">Nombre de paire(s) : </p>
                 <p id="pair"></p>
             </div>
-            <div class="bloc_countDown col-lg-6">
+            <div id="bloc_countDown" class="bloc_countDown col-lg-6">
                 <p class="title-countDown">Compteur :</p>
-                <div id="countdown"></div>
             </div>
         </div>
         <table id="3" class="memory_game tree gameBord">
@@ -53,22 +52,4 @@
     </div>
 
 </div>
-<div id="winContainer">
-    <div id="starWinContainer">
-        <div id="starContainer"></div>
-        <div id="starFade"></div>
-    </div>
-    <div id="fireworksContainer"></div>
-</div>
-<div id="blocGameover">
-    <div class="first_message">
-        <p> GAME </p>
-        <p> OVER </p>
-    </div>
-    <div class="second_message">
-        <p> Trop long! </p>
-    </div>
-    <div class="reload_bloc">
-        <button onclick="buttonReload()">Réinitialiser</button>
-    </div>
-</div>
+<?php include 'widgets/win_gameOver.php'; ?>

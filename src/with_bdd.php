@@ -22,4 +22,43 @@ include 'datas/requete_select_cat.php';
         <button class="button_pictures" onclick="location.href='../src/add_pictures.php'">Images</button>
     </div>
 
+    <div id="tabGame" class="col-lg-6">
+        <div class="row bloc_title col-lg-12">
+            <div class="bloc_pair col-lg-6">
+                <p class="title_pair">Nombre de paire(s) : </p>
+                <p id="pair"></p>
+            </div>
+            <div class="bloc_countDown col-lg-6">
+                <p class="title-countDown">Compteur :</p>
+                <div id="countdown"></div>
+            </div>
+        </div>
+        <table id="3" class="memory_game tree gameBord">
+            <?php for ($j = 1; $j <= 2; $j++) { ?>
+                <tr>
+                    <?php for ($k = 1; $k <= 4; $k++) { ?>
+                        <td class="memory_card">
+                            <img class="front_img" src="ressources/spr0.jpg">
+                            <img id="imgTree" class="back_img" src="ressources/spr0.jpg">
+                        </td>
+                    <?php } ?>
+                </tr>
+            <?php } ?>
+        </table>
+        <table id="4" class="memory_game four gameBord">
+            <?php for ($j = 1; $j <= 3; $j++) { ?>
+                <tr>
+                    <?php for ($k = 1; $k <= 4; $k++) { ?>
+                        <td class="memory_card">
+                            <img class="front_img" src="ressources/spr0.jpg">
+                            <img id="imgFour" class="back_img" src="ressources/spr0.jpg">
+                        </td>
+                    <?php } ?>
+                </tr>
+            <?php } ?>
+        </table>
+
+    </div>
+
 </div>
+<?php include 'widgets/win_gameOver.php'; ?>

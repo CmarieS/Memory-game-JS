@@ -1,7 +1,20 @@
 function buttonSelect() {
-    var timer = 0;
-    var countDown = 0;
+
     document.getElementById("winContainer").style.display = "none";
+    if(document.getElementById("bloc_countDown").lastChild.innerHTML != "")
+    {
+        document.getElementById("bloc_countDown").removeChild(document.getElementById("bloc_countDown").lastChild);
+        var e = document.createElement("div");
+        e.setAttribute('id','countdown');
+        document.getElementById("bloc_countDown").appendChild(e);
+    }
+    var memory_car_num = document.getElementsByClassName("memory_card");
+    for (let index = 0; index < memory_car_num.length; index++) {
+        if(memory_car_num[index].classList.contains("flip"))
+        {
+            memory_car_num[index].classList.remove("flip");
+        }
+    }
     // Récupération de l'index du <option> choisi pour la selection du plateau
     select_gameBord = document.getElementById("select_gameBord");
     choice_game = select_gameBord.value;  
@@ -108,7 +121,7 @@ function countdown(elementName, minutes, seconds) {
             }
         }
     }
-    element = document.getElementById(elementName);
+    element = document.getElementById(elementName).lastChild;
     endTime = (+new Date) + 1000 * (60 * minutes + seconds) + 500;
     updateTimer();
 }
@@ -135,11 +148,13 @@ function selectShowDisplay()
 
 function pair(choice_game)
 {
+    var timer = 0;
+    var countDown = 0;
     if (choice_game == 3)
     {
         timer = 60000;
         countDown = 1;
-         document.getElementById("pair").innerHTML = "4";
+        document.getElementById("pair").innerHTML = "4";
             
     }
     else if (choice_game == 4)
@@ -151,5 +166,5 @@ function pair(choice_game)
 
     }
     setTimeout(end, timer);
-    countdown("countdown", countDown, 0);
+    countdown("bloc_countDown", countDown, 0);
 }
