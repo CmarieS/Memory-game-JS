@@ -1,15 +1,14 @@
 <?php
 
 if (isset($_POST["valider"])) {
-    $pdo = include '../datas/connexion.php';
-    $sql = "insert into game_pictures(name,size,type,category_id,bin) VALUES (:name,:size,:type,:categoryId,:bin)";
-    $res = $pdo->prepare($sql);
-    $exec = $res->execute(array(
-        ":name" => $_FILES["picture"]["name"], ":size" => $_FILES["picture"]["size"],
-        ":type" => $_FILES["picture"]["type"], ":categoryId" => 0, ":bin" => file_get_contents($_FILES["picture"]["tmp_name"])
+    include('../datas/connexion.php');
+    $req = $pdo->prepare("insert into game_pictures(name,size,type,category_id,bin) values(?,?,?,?,?)");
+    $exec = $req->execute(array(
+        $_FILES["picture"]["name"], $_FILES["picture"]["size"],
+        $_FILES["picture"]["type"], $_POST["categorie"], file_get_contents($_FILES["picture"]["tmp_name"])
     ));
 }
-include '../datas/requete_select_cat.php';
+include('../datas/requete_select_cat.php');
 ?>
 <!DOCTYPE html>
 <html>
