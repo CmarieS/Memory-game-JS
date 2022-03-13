@@ -1,5 +1,5 @@
 <?php
-include 'datas/requete_select_cat.php';
+include 'datas/requetes.php';
 ?>
 <div class="row selectGame col-lg-12">
     <div id="select" class="select col-lg-6">
@@ -19,7 +19,7 @@ include 'datas/requete_select_cat.php';
         </select>
         <button class="button_select" onclick="buttonSelect()">Sélectionner</button>
         <button class="button_select" onclick="buttonReload()">Réinitialiser</button>
-        <button class="button_pictures" onclick="location.href='../src/add_pictures.php'">Images</button>
+        <button class="button_pictures" onclick="location.href='../src/pictures.php'">Images</button>
     </div>
 
     <div id="tabGame" class="col-lg-6">

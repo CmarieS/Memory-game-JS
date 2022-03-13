@@ -101,8 +101,28 @@
 }
 
 .selectGame .select .title,
-.addimages h1 {
+.addPictures h1,
+.deletePictures h1,
+.addPictures_form label,
+.addPictures_form .inputPictures,
+.deletePictures_form label {
   color: white;
+}
+
+.container .addPictures h1,
+.container .deletePictures h1 {
+  text-align: center;
+}
+
+.container .addPictures {
+  border-right: #fff 1rem solid;
+}
+
+.container .deletePictures {
+  border-left: #fff 1rem solid;
+}
+.container {
+  height: 100%;
 }
 
 /* FireWorks */
