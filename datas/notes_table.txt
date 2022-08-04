@@ -2,11 +2,10 @@ CREATE TABLE IF NOT EXISTS `game_category` (
   `id` int NOT NULL,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB*/
+) ENGINE=InnoDB;
 
 INSERT INTO `game_category` (`id`, `name`) VALUES
 (0, 'paysage');
-COMMIT;*/
 
 
 DROP TABLE IF EXISTS `game_pictures`;
@@ -18,12 +17,11 @@ CREATE TABLE IF NOT EXISTS `game_pictures` (
   `category_id` int NOT NULL,
   `bin` longblob NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `category_id` (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  INDEX KEY `category_id` (`category_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4;
 
 
 -- Contraintes pour la table `game_pictures`
 --
 ALTER TABLE `game_pictures`
   ADD CONSTRAINT `game_pictures_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `game_category` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-COMMIT;
