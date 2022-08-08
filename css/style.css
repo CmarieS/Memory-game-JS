@@ -16,7 +16,7 @@
   margin-right: 25%;
   margin-top: 2%;
 }
-.memory_game .memory_card {
+.memory_game .memory_card , .memory_game_with_bdd .memory_card {
   position: relative;
   width: 250px;
   height: 200px;
@@ -105,7 +105,8 @@
 .deletePictures h1,
 .addPictures_form label,
 .addPictures_form .inputPictures,
-.deletePictures_form label {
+.deletePictures_form label,
+.deletePictures_form p {
   color: white;
 }
 
@@ -368,4 +369,15 @@ body {
   font-size: 40px;
   font-weight: bold;
   text-decoration: none;
+}
+/* with BDD */
+
+.memory_game_with_bdd img
+{
+  width: 100%;
+}
+
+.memory_game_with_bdd {
+  perspective: 1000px;
+  margin-top: 2%;
 }

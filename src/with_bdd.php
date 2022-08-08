@@ -5,9 +5,17 @@ include 'datas/requetes.php';
     <div id="select" class="select col-lg-6">
         <h1 class="title col-lg-11">Sélection du plateau/catégorie d'images</h1>
         <select name="select_gameBord" id="select_gameBord" class="select_gameBord">
-            <option value="null">Sélectionner votre grille</option>
-            <option value="3">2*4</option>
-            <option value="4">3*4</option>
+            <?php if(empty($donnees)) { ?>
+                <option value="null">Ajouter des images</option>
+            <?php } else { ?>
+                <option value="null">Sélectionner votre grille</option>
+                <?php if(count($donnees) >= 4) {?>
+                    <option value="3">2*4</option>
+                <?php } if (count($donnees) >= 6) { ?>
+                    <option value="4">3*4</option>
+                <?php } ?>
+            <?php } ?>
+            
         </select>
         <select name="select_picture" id="select_picture" class="select_picture">
             <option value="null">Sélectionner vos images</option>
@@ -33,32 +41,26 @@ include 'datas/requetes.php';
                 <div id="countdown"></div>
             </div>
         </div>
-        <table id="3" class="memory_game tree gameBord">
+    </div>
+    <?php if(!empty($donnees)) { 
+    
+    $test = [];
+    array_push($test,$donnees);
+        
+    ?>
+    <table id="3" class="memory_game_with_bdd">
             <?php for ($j = 1; $j <= 2; $j++) { ?>
                 <tr>
-                    <?php for ($k = 1; $k <= 4; $k++) { ?>
-                        <td class="memory_card">
-                            <img class="front_img" src="ressources/spr0.jpg">
-                            <img id="imgTree" class="back_img" src="ressources/spr0.jpg">
-                        </td>
+                    <?php for ($k = 0; $k <= 3; $k++) {
+                        $img=base64_encode($donnees[$k]['bin']);
+                    ?>
+                    <td class="memory_card">
+                        <img class="img-responsive" src="data:<?php echo $donnees[$k]["type"]; ?>;charset=utf8;base64,<?php echo $img ?>"/>
+                    </td>
                     <?php } ?>
                 </tr>
             <?php } ?>
         </table>
-        <table id="4" class="memory_game four gameBord">
-            <?php for ($j = 1; $j <= 3; $j++) { ?>
-                <tr>
-                    <?php for ($k = 1; $k <= 4; $k++) { ?>
-                        <td class="memory_card">
-                            <img class="front_img" src="ressources/spr0.jpg">
-                            <img id="imgFour" class="back_img" src="ressources/spr0.jpg">
-                        </td>
-                    <?php } ?>
-                </tr>
-            <?php } ?>
-        </table>
-
-    </div>
-
+    <?php } ?>
 </div>
 <?php include 'widgets/win_gameOver.php'; ?>

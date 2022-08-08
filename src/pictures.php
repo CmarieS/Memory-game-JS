@@ -3,11 +3,14 @@ include('../datas/connexion.php');
 include('../datas/requetes.php');
 
 if (isset($_POST["addPictures"])) {
+    $countfiles = count($_FILES['picture']['name']);
+    for($i=0;$i<$countfiles;$i++){
     $req = $pdo->prepare("insert into game_pictures(name,size,type,category_id,bin) values(?,?,?,?,?)");
     $exec = $req->execute(array(
-        $_FILES["picture"]["name"], $_FILES["picture"]["size"],
-        $_FILES["picture"]["type"], $_POST["categorie"], file_get_contents($_FILES["picture"]["tmp_name"])
+        $_FILES["picture"]["name"][$i], $_FILES["picture"]["size"][$i],
+        $_FILES["picture"]["type"][$i], $_POST["categorie"], file_get_contents($_FILES["picture"]["tmp_name"][$i])
     ));
+    }
     header("Refresh:1");
 }
 if (isset($_POST["deletePictures"])) {
@@ -44,7 +47,7 @@ if (isset($_POST["deletePictures"])) {
             <div class="addPictures_form">
                 <form action="" method="post" enctype="multipart/form-data">
                     <label for="picture">Images: </label>
-                    <input class="inputPictures" type="file" name="picture">
+                    <input class="inputPictures" type="file" name="picture[]" multiple>
                     <br><br>
                     <label for="categorie">Catégorie de l'image:</label>
                     <select name="categorie">
@@ -64,7 +67,11 @@ if (isset($_POST["deletePictures"])) {
             <h1>Supprimer une/des image(s)</h1>
             <div class="deletePictures_form">
                 <form action="" method="post" enctype="multipart/form-data">
-                    <label for="picture">Images: </label>
+                    <div class="col-lg-12 row">
+                    <label class="col-lg-2" for="picture">Images: </label> 
+                    <p class="col-lg-10"><?php echo $countPictures ?></p>
+                    </div>
+                    
                     <br>
                     <select name="pictures[]" multiple>
                         <?php
