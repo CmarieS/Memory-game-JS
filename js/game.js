@@ -1,4 +1,4 @@
-function buttonSelect() {
+function buttonSelect(paramTab) {
 
     document.getElementById("winContainer").style.display = "none";
     if(document.getElementById("bloc_countDown").lastChild.innerHTML != "")
@@ -10,6 +10,7 @@ function buttonSelect() {
     }
     var memory_car_num = document.getElementsByClassName("memory_card");
     for (let index = 0; index < memory_car_num.length; index++) {
+        console.log(memory_car_num[index].classList.contains("flip"));
         if(memory_car_num[index].classList.contains("flip"))
         {
             memory_car_num[index].classList.remove("flip");
@@ -36,7 +37,13 @@ function buttonSelect() {
     }
     else
     {
-        var x = document.getElementsByClassName("open");
+        gameWithNoBdd(paramTab);
+    } 
+}
+
+function gameWithNoBdd(paramtab)
+{
+    var x = document.getElementsByClassName("open");
         var i;
         for (i = 0; i < x.length; i++) {
             x[i].style.display = 'none';
@@ -48,14 +55,14 @@ function buttonSelect() {
         document.getElementById(choice_game).style.display = "block";
         document.getElementById(choice_game).classList.add("open");
         
-        if(choice_game == 3)
+        if(choice_game == 3 && paramtab == 1)
         {
             var a = [1, 2, 3, 1, 2, 3, 4, 4]
                     .map(p => [p, Math.random()])
                     .sort((a, b) => a[1] - b[1])
                     .map(p => p[0])
         }
-        else if(choice_game == 4)
+        else if(choice_game == 4 && paramtab == 1)
         {
             var a = [1,1,2,2,3,3,4,4,5,5,6,6]
                     .map(p => [p, Math.random()])
@@ -69,14 +76,14 @@ function buttonSelect() {
 
         for (let i = 0; i < pics.length; i++) 
         {
-            if (pics[i].id == "imgTree" && choice_game == 3)
+            if (pics[i].id == "imgTree" && choice_game == 3 && paramtab == 1)
             {
                 picsTab.push(pics[i]);
                 for (let j = 0; j < picsTab.length; j++) {
                     pics[i].src = 'ressources/' + choice_picture +"/spr"+ a[j] + '.jpg';
                 }
             }
-            else if (pics[i].id == "imgFour" && choice_game == 4)
+            else if (pics[i].id == "imgFour" && choice_game == 4 && paramtab == 1)
             {
                 picsTab.push(pics[i]);
                 for (let j = 0; j < picsTab.length; j++) {
@@ -84,7 +91,6 @@ function buttonSelect() {
                 }  
             }  
         }
-    } 
 }
 function buttonReload(){
 

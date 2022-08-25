@@ -25,7 +25,7 @@ include 'datas/requetes.php';
             <?php
             } ?>
         </select>
-        <button class="button_select" onclick="buttonSelect()">Sélectionner</button>
+        <button class="button_select" onclick="buttonSelect(0)">Sélectionner</button>
         <button class="button_select" onclick="buttonReload()">Réinitialiser</button>
         <button class="button_pictures" onclick="location.href='../src/pictures.php'">Images</button>
     </div>
@@ -36,31 +36,36 @@ include 'datas/requetes.php';
                 <p class="title_pair">Nombre de paire(s) : </p>
                 <p id="pair"></p>
             </div>
-            <div class="bloc_countDown col-lg-6">
+            <div id="bloc_countDown" class="bloc_countDown col-lg-6">
                 <p class="title-countDown">Compteur :</p>
-                <div id="countdown"></div>
             </div>
         </div>
-    </div>
     <?php if(!empty($donnees)) { 
-    
-    $test = [];
-    array_push($test,$donnees);
-        
+        $array = array_merge($donnees, $donnees);
+        shuffle($array);
     ?>
-    <table id="3" class="memory_game_with_bdd">
-            <?php for ($j = 1; $j <= 2; $j++) { ?>
-                <tr>
-                    <?php for ($k = 0; $k <= 3; $k++) {
-                        $img=base64_encode($donnees[$k]['bin']);
-                    ?>
-                    <td class="memory_card">
-                        <img class="img-responsive" src="data:<?php echo $donnees[$k]["type"]; ?>;charset=utf8;base64,<?php echo $img ?>"/>
-                    </td>
-                    <?php } ?>
-                </tr>
-            <?php } ?>
-        </table>
-    <?php } ?>
+        <table id="3" class="memory_game_with_bdd tree gameBord">
+                        <?php for ($k = 0; $k < count($array); $k++) {
+                            $img=base64_encode($array[$k]['bin']);
+                        if($k == 0)
+                        {
+                            ?> <tr>
+                        <?php } ?>
+                        <td class="memory_card">
+                            <img class="front_img" src="ressources/spr0.jpg">
+                            <img id="imgTree" class="img-responsive back_img" src="data:<?php echo $array[$k]["type"]; ?>;charset=utf8;base64,<?php echo $img ?>"/>
+                        </td>
+                        <?php if($k == 3 ) 
+                        {
+                            ?></tr><tr><?php
+                        }
+                        ?><?php if($k == count($array) ) 
+                        {
+                            ?></tr><?php
+                        }
+                        ?><?php } ?>
+            </table>
+        <?php } ?>
+    </div>
 </div>
 <?php include 'widgets/win_gameOver.php'; ?>

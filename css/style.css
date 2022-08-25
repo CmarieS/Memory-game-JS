@@ -28,19 +28,21 @@
 .memory_card.flip {
   transform: rotateY(180deg);
 }
-.memory_game .memory_card .front_img {
+.memory_game .memory_card .front_img, .memory_game_with_bdd .memory_card .front_img {
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
 }
-.memory_game .memory_card .back_img {
+.memory_game .memory_card .back_img , .memory_game_with_bdd .memory_card .back_img {
   width: 100%;
   height: 100%;
 }
 .memory_game .memory_card .front_img,
-.memory_game .memory_card .back_img {
+.memory_game .memory_card .back_img ,
+.memory_game_with_bdd .memory_card .front_img,
+.memory_game_with_bdd .memory_card .back_img {
   backface-visibility: hidden;
 }
 .memory_game img {
@@ -95,6 +97,10 @@
   background-color: transparent;
   border-color: transparent;
   color: white;
+}
+.selectGame .select
+{
+  z-index: 1 !important;
 }
 .selectGame .selectDisplay {
   display: none;
@@ -375,6 +381,8 @@ body {
 .memory_game_with_bdd img
 {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .memory_game_with_bdd {

@@ -11,7 +11,7 @@
             <option value="jeux">Jeux</option>
             <option value="noel">Noêl</option>
         </select>
-        <button class="button_select" onclick="buttonSelect()">Sélectionner</button>
+        <button class="button_select" onclick="buttonSelect(1)">Sélectionner</button>
         <button class="button_select" onclick="buttonReload()">Réinitialiser</button>
     </div>
     <div id="tabGame" class="col-lg-6">
