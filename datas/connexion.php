@@ -1,3 +1,3 @@
 <?php
 
-$pdo = new PDO('mysql:host=localhost;dbname=game', 'root', '', array(PDO::ATTR_PERSISTENT => true));
+$pdo = new PDO('mysql:host=localhost;dbname=game', 'rooter', '', array(PDO::ATTR_PERSISTENT => true));

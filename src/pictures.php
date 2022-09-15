@@ -4,7 +4,7 @@ include('../datas/requetes.php');
 
 if (isset($_POST["addPictures"])) {
     $categorieId = $_POST['categorie'];
-    echo "<script>alert($categorieId)</script>";
+    //echo "<script>alert($categorieId)</script>";
     $countfiles = count($_FILES['picture']['name']);
     for($i=0;$i<$countfiles;$i++){
     $req = $pdo->prepare("insert into game_pictures(name,size,type,category_id,bin) values(?,?,?,?,?)");
