@@ -3,6 +3,8 @@ include('../datas/connexion.php');
 include('../datas/requetes.php');
 
 if (isset($_POST["addPictures"])) {
+    $categorieId = $_POST['categorie'];
+    echo "<script>alert($categorieId)</script>";
     $countfiles = count($_FILES['picture']['name']);
     for($i=0;$i<$countfiles;$i++){
     $req = $pdo->prepare("insert into game_pictures(name,size,type,category_id,bin) values(?,?,?,?,?)");
@@ -26,6 +28,26 @@ if (isset($_POST["deletePictures"])) {
     }
     header("Refresh:1");
 }
+if (isset($_POST["displayPictures"])) {
+    $pictures = array();
+    $categoryIdDisplay = $_POST["displayCategorie"];
+    $countPictures = 0;
+    if($categoryIdDisplay == "null")
+    {
+        $sqlPictures = "SELECT * FROM game_pictures";
+        $pictures = $pdo->query($sqlPictures);
+        $countPictures = $pictures->rowCount();
+    }
+    else
+    {
+        $picturesByIdSql = $pdo->prepare("SELECT * FROM game_pictures where category_id = :category_id");
+        $picturesByIdSql->execute(['category_id' => $categoryIdDisplay]); 
+        $pictures = $picturesByIdSql->fetchAll();
+        $countPictures = count($pictures);
+    }
+    
+    
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -45,7 +67,7 @@ if (isset($_POST["deletePictures"])) {
         <div class="addPictures col-lg-6">
             <h1>Ajouter une/des image(s)</h1>
             <div class="addPictures_form">
-                <form action="" method="post" enctype="multipart/form-data">
+                <form action="" method="POST" enctype="multipart/form-data">
                     <label for="picture">Images: </label>
                     <input class="inputPictures" type="file" name="picture[]" multiple>
                     <br><br>
@@ -54,24 +76,35 @@ if (isset($_POST["deletePictures"])) {
                         <option value="null">Choix de la catégorie</option>
                         <?php
                         foreach ($categories as $category) {
-                        ?> <option value="<?php $category ?>"><?php echo $category["name"] ?></option>
+                        ?> <option value="<?php echo $category["id"] ?>"><?php echo $category["name"] ?></option>
                         <?php
                         } ?>
-                    </select>
+                    </select> 
                     <br><br>
-                    <input type="submit" name="addPictures" value="Ajouter">
+                    <button type="submit" name="addPictures">Ajouter</button>
             </div>
             </form>
         </div>
         <div class="deletePictures col-lg-6">
             <h1>Supprimer une/des image(s)</h1>
             <div class="deletePictures_form">
+                <form action="" method="post">
+                    <label for="categorie">Catégorie de l'image:</label>
+                    <select name="displayCategorie">
+                        <option value="null">Choix de la catégorie</option>
+                        <?php
+                        foreach ($categories as $category) {
+                        ?> <option value="<?php echo $category['id'] ?>"><?php echo $category["name"] ?></option>
+                        <?php
+                        } ?>
+                    </select>
+                    <button type="submit" name="displayPictures">Afficher</button>
+                    <br><br>
+                </form>
                 <form action="" method="post" enctype="multipart/form-data">
                     <div class="col-lg-12 row">
-                    <label class="col-lg-2" for="picture">Images: </label> 
-                    <p class="col-lg-10"><?php echo $countPictures ?></p>
+                    <p class="col-lg-2" for="picture">Images : <?php echo $countPictures ?> </p>
                     </div>
-                    
                     <br>
                     <select name="pictures[]" multiple>
                         <?php
@@ -81,7 +114,7 @@ if (isset($_POST["deletePictures"])) {
                         } ?>
                     </select>
                     <br><br>
-                    <input type="submit" name="deletePictures" value="Supprimer">
+                    <button type="submit" name="deletePictures">Supprimer</button>
                 </form>
             </div>
         </div>

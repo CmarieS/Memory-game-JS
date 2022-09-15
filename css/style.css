@@ -132,6 +132,25 @@
   height: 100%;
 }
 
+.container .picture_table
+{
+  width: 100%;
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+
+.container .picture_table th
+{
+  color: white;
+  text-align: center;
+}
+
+.container .picture_table th, .container .picture_table td
+{
+  color: white;
+  text-align: center;
+}
+
 /* FireWorks */
 
 html,
@@ -141,7 +160,7 @@ body {
   height: 100%;
   width: 100%;
   overflow: hidden;
-  background-color: black;
+  background-color: #292929;
 }
 #winContainer {
   background-color: transparent;

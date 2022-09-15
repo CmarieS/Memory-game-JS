@@ -96,6 +96,7 @@ function buttonReload(){
 
     document.getElementById("winContainer").style.display = "none";
     document.getElementById("blocGameover").style.display = "none";
+    document.getElementById("button_select").style.display = "block";
     window.location.reload();
 }
 function end()
@@ -103,8 +104,11 @@ function end()
     if (document.getElementById("winContainer").style.display != "block")
     {
         document.getElementById("blocGameover").style.display = "block";
+        // cacher les paramètres quand le bloc game over apparait 
+        selectShowDisplay();
     }
 }
+// Gestion du compteur 
 function countdown(elementName, minutes, seconds) {
     
     var element, endTime, hours, mins, msLeft, time;
@@ -138,7 +142,7 @@ function selectShowDisplay()
     if (document.getElementById("select").classList.contains("selectDisplay"))
     {
         document.getElementById("select").classList.remove("selectDisplay");
-        document.getElementById('close_button').innerHTML = "->";
+        document.getElementById('close_button').innerHTML = "-";
         document.getElementById("tabGame").classList.add("col-lg-6");
         document.getElementById("select").classList.remove("col-lg-12");
     }
@@ -173,4 +177,5 @@ function pair(choice_game)
     }
     setTimeout(end, timer);
     countdown("bloc_countDown", countDown, 0);
+    document.getElementById("button_select").style.display = "none";
 }

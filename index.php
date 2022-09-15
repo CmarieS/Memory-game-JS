@@ -9,7 +9,7 @@
 
 
 <body>
-    <button id="close_button" class="close_button col-lg-1" onclick="selectShowDisplay()">-></button>
+    <button id="close_button" class="close_button col-lg-1" onclick="selectShowDisplay()">-</button>
     <?php
     $connexion = false;
     try {

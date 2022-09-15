@@ -25,7 +25,7 @@ include 'datas/requetes.php';
             <?php
             } ?>
         </select>
-        <button class="button_select" onclick="buttonSelect(0)">Sélectionner</button>
+        <button id="button_select" class="button_select" onclick="buttonSelect(0)">Sélectionner</button>
         <button class="button_select" onclick="buttonReload()">Réinitialiser</button>
         <button class="button_pictures" onclick="location.href='../src/pictures.php'">Images</button>
     </div>
