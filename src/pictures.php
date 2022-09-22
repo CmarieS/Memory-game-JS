@@ -29,8 +29,12 @@ if (isset($_POST["deletePictures"])) {
     header("Refresh:1");
 }
 if (isset($_POST["displayPictures"])) {
+    session_start(); // pour pouvoir utiliser les sessions
+    $category_explode = explode('|', $_POST["displayCategorie"]);
+    $_SESSION['displayCategorieId'] = $category_explode[0];
+    $_SESSION['displayCategorieName'] = $category_explode[1];
     $pictures = array();
-    $categoryIdDisplay = $_POST["displayCategorie"];
+    $categoryIdDisplay = $category_explode[0];
     $countPictures = 0;
     if($categoryIdDisplay == "null")
     {
@@ -91,10 +95,16 @@ if (isset($_POST["displayPictures"])) {
                 <form action="" method="post">
                     <label for="categorie">Catégorie de l'image:</label>
                     <select name="displayCategorie">
-                        <option value="null">Choix de la catégorie</option>
+                        <?php if(isset($_SESSION['displayCategorieId']))
+                        {
+                            ?> <option value="<?php echo $_SESSION['displayCategorieId']?>,<?php echo $_SESSION['displayCategorieName']?>"> <?php echo $_SESSION['displayCategorieName'] ?></option> <?php 
+                        }
+                        else { ?>
+                            <option value="null">Choix de la catégorie</option>
+                        <?php } ?>
                         <?php
                         foreach ($categories as $category) {
-                        ?> <option value="<?php echo $category['id'] ?>"><?php echo $category["name"] ?></option>
+                        ?> <option value="<?php echo $category["id"] ?>|<?php echo $category["name"] ?>"><?php echo $category["name"] ?></option>
                         <?php
                         } ?>
                     </select>
