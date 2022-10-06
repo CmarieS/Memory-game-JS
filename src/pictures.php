@@ -97,12 +97,11 @@ if (isset($_POST["displayPictures"])) {
                     <select name="displayCategorie">
                         <?php if(isset($_SESSION['displayCategorieId']))
                         {
-                            ?> <option value="<?php echo $_SESSION['displayCategorieId']?>,<?php echo $_SESSION['displayCategorieName']?>"> <?php echo $_SESSION['displayCategorieName'] ?></option> <?php 
+                            ?> <option value="<?php echo $_SESSION['displayCategorieId']?>|<?php echo $_SESSION['displayCategorieName']?>"> <?php echo $_SESSION['displayCategorieName'] ?></option> <?php 
                         }
                         else { ?>
                             <option value="null">Choix de la catégorie</option>
-                        <?php } ?>
-                        <?php
+                        <?php } ?><?php
                         foreach ($categories as $category) {
                         ?> <option value="<?php echo $category["id"] ?>|<?php echo $category["name"] ?>"><?php echo $category["name"] ?></option>
                         <?php
