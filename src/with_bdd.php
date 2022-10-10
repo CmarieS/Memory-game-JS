@@ -23,7 +23,7 @@ if (isset($_POST["confirmParam"])) {
     }
 
     $selectPictureIdDisplay = $select_picture_explode[0];
-    $picturesByIdSql = $pdo->prepare("SELECT * FROM game_pictures where category_id = :category_id");
+    $picturesByIdSql = $pdo->prepare("SELECT * FROM game_pictures where category_id = :category_id LIMIT $nomberPicture");
     $picturesByIdSql->execute(['category_id' => $selectPictureIdDisplay]); 
     $donneees = $picturesByIdSql->fetchAll();
     $countDonneees = count($donneees);
