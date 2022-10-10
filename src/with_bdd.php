@@ -28,8 +28,6 @@ if (isset($_POST["confirmParam"])) {
     $donneees = $picturesByIdSql->fetchAll();
     $countDonneees = count($donneees);
     $_SESSION['countDonneees'] = $countDonneees;
-    $test = $_SESSION['selectPlateauId'];
-    echo "<script>alert(\"$nomberPicture,$test\")</script>";
     if($countDonneees < $nomberPicture)
     {
         echo "<script>alert(\"Pas assez d\images dans votre bdd ( besoin de $nomberPicture images de la même catégorie)\")</script>";
