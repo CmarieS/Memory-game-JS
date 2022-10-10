@@ -166,7 +166,7 @@ if(isset($_POST["resetParam"]))
                 <img class="front_img" src="ressources/spr0.jpg">
                 <img id="imgTree" class="img-responsive back_img" src="data:<?php echo $array[$k]["type"]; ?>;charset=utf8;base64,<?php echo $img ?>"/>
             </td>
-            <?php if($k == 5 ) 
+            <?php if($k == 3 || $k ==7  ) 
             {
                 ?></tr><tr><?php
             }
