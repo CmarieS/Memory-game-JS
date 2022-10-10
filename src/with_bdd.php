@@ -27,7 +27,10 @@ if (isset($_POST["confirmParam"])) {
     $picturesByIdSql->execute(['category_id' => $selectPictureIdDisplay]); 
     $donneees = $picturesByIdSql->fetchAll();
     $countDonneees = count($donneees);
-    if($nomberPicture != $countDonneees)
+    $_SESSION['countDonneees'] = $countDonneees;
+    $test = $_SESSION['selectPlateauId'];
+    echo "<script>alert(\"$nomberPicture,$test\")</script>";
+    if($countDonneees < $nomberPicture)
     {
         echo "<script>alert(\"Pas assez d\images dans votre bdd ( besoin de $nomberPicture images de la même catégorie)\")</script>";
     }
@@ -110,7 +113,7 @@ if(isset($_POST["resetParam"]))
     </form>
     <br>
         <div class="blocButtons">
-            <?php if( ($countDonneees == 4 && $_SESSION['selectPlateauId'] == 3) || ($countDonneees == 6 && $_SESSION['selectPlateauId'] == 4)) { ?>
+            <?php if($countDonneees == 4 || $countDonneees == 6) { ?>
                 <button id="button_select" class="button_select" onclick="buttonSelect(0)">Démarrer</button>
             <?php } ?>
             <button class="button_select" onclick="buttonReload()">Réinitialiser</button>
