@@ -106,9 +106,9 @@ background-position: top center;height: 100%;'>
             <h1 class="title col-lg-11">Instructions:</h1>
 
             <ul>
-                <li>Sélectionner les images souhaités,valider les paramètres et démarrer</li>
+                <li>Sélectionner les images souhaitées,valider les paramètres et démarrer</li>
                 <li>Retourner les cartes pour trouver les paires</li>
-                <li>Quand vous trouvez une pair, le compteur diminu</li>
+                <li>Quand vous trouvez une paire, le compteur diminue</li>
                 <li>Le jeu est chronométré</li>
             </ul>
         </div>
