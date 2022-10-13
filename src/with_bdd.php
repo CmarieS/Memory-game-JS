@@ -2,6 +2,7 @@
 include 'datas/requetes.php';
 
 $countDonneees = 0;
+$tabFirst = "";
 
 if (isset($_POST["confirmParam"])) {
 
@@ -9,21 +10,11 @@ if (isset($_POST["confirmParam"])) {
     $select_picture_explode = explode('|', $_POST["select_picture"]);
     $_SESSION['select_pictureId'] = $select_picture_explode[0];
     $_SESSION['select_pictureName'] = $select_picture_explode[1];
-    $_SESSION['selectPlateauId'] = $_POST['select_gameBord'];
     $nomberPicture = 0;
-    if($_POST['select_gameBord'] == 3)
-    {
-        $_SESSION['selectPlateauName'] = "2*4";
-        $nomberPicture = 4;
-    }
-    else
-    {
-        $_SESSION['selectPlateauName'] = "3*4";
-        $nomberPicture = 6;
-    }
-
+    
+    
     $selectPictureIdDisplay = $select_picture_explode[0];
-    $picturesByIdSql = $pdo->prepare("SELECT * FROM game_pictures where category_id = :category_id LIMIT $nomberPicture");
+    $picturesByIdSql = $pdo->prepare("SELECT * FROM game_pictures where category_id = :category_id LIMIT 4");
     $picturesByIdSql->execute(['category_id' => $selectPictureIdDisplay]); 
     $donneees = $picturesByIdSql->fetchAll();
     $countDonneees = count($donneees);
@@ -44,39 +35,32 @@ if(isset($_POST["resetParam"]))
     unset($_SESSION['selectPlateauName']);
 }
 ?>
-<div class="row selectGame col-lg-12">
-    <!--<form action="index.php" method="POST"  id="select" class="select col-lg-6">-->
+<?php if(!empty($donneees)) { 
+        $array = array_merge($donneees, $donneees);
+        shuffle($array);
+        $imgBackground=base64_encode($array[1]['bin']);?>
+<?php } ?>
+
+<?php if(!empty($donneees)) { ?> 
+<div class="row selectGame col-lg-12" style='background:url(data:<?php echo $donneees[1]["type"]; ?>;charset=utf8;base64,<?php echo $imgBackground; ?>);background-repeat: no-repeat;background-size: 100% 100%;
+background-position: top center;height: 100%;'>
+<?php } else {
+    $today = date("H");
+        if($today <= 12)
+        { ?>
+            <div class="row selectGame col-lg-12" style='background:url(../../ressources/days.png);background-repeat: no-repeat;background-size: 100% 100%;
+            background-position: top center;height: 100%;'>
+        <?php } else { ?>
+            <div class="row selectGame col-lg-12" style='background:url(../../ressources/night.png);background-repeat: no-repeat;background-size: 100% 100%;
+            background-position: top center;height: 100%;'>
+    <?php  }
+    } ?>
     <div id="select" class="select col-lg-6">
-        <h1 class="title col-lg-11">Paramètres:</h1>
-        <br>
-        <table class="tableParamPicture">
-            <tr>
-                <td class="tableParamPictureTd">
-                    <h3>Gestion des images:</h3>
-                </td> 
-                <td class="tableParamPictureTd">
-                    <button class="button_pictures" onclick="location.href='../src/pictures.php'">Images</button>
-                </td>
-            </tr>
-        </table>
+            <h1 class="title col-lg-11">Paramètres:</h1>
         <br>
         <form action="" method="POST">
             <table class="tableParam">
                 <tr>
-                    <td class="tableParamTd">
-                        <h3>Sélection de la grille: </h3>
-                        <select name="select_gameBord" id="select_gameBord" class="select_gameBord">
-                            <?php if(isset($_SESSION['select_pictureId']))
-                            {
-                                ?> <option value="<?php echo $_SESSION['selectPlateauId']?>"> <?php echo $_SESSION['selectPlateauName'] ?></option> <?php 
-                            }
-                            else { ?>
-                                <option value="null">Sélectionner votre grille</option>
-                                <option value="3">2*4</option>
-                                <option value="4">3*4</option>
-                            <?php } ?>
-                        </select>
-                    </td>
                     <td class="tableParamTd">
                         <h3>Sélection de la catégorie d'images: </h3>
                         <select name="select_picture" id="select_picture" class="select_picture">
@@ -100,10 +84,10 @@ if(isset($_POST["resetParam"]))
                 </tr>
                 <tr class="tableParamTrButtom">
                     <td class="tableParamTdButtom">
-                        <button type="submit" name="confirmParam">Valider paramètres</button>
-                    </td>
-                    <td class="tableParamTdButtom">
-                        <button type="submit" name="resetParam">Supprimer paramètres</button>
+                        <div>
+                            <button type="submit" name="confirmParam">Valider paramètres</button>
+                            <button type="submit" name="resetParam">Supprimer paramètres</button>
+                        </div>
                     </td>
                 </tr>
             </table>   
@@ -112,12 +96,36 @@ if(isset($_POST["resetParam"]))
     <br>
         <div class="blocButtons">
             <?php if($countDonneees == 4 || $countDonneees == 6) { ?>
-                <button id="button_select" class="button_select" onclick="buttonSelect(0)">Démarrer</button>
+                <button id="button_select" class="button_select" onclick="buttonSelect(0,3,'' + <?php echo $donneees[1]['url'] ?> +'')">Démarrer</button>
             <?php } ?>
             <button class="button_select" onclick="buttonReload()">Réinitialiser</button>
-        </div> 
+        </div>
+        <br>
+        <br>
+        <div>
+            <h1 class="title col-lg-11">Instructions:</h1>
+
+            <ul>
+                <li>Sélectionner les images souhaités,valider les paramètres et démarrer</li>
+                <li>Retourner les cartes pour trouver les paires</li>
+                <li>Quand vous trouvez une pair, le compteur diminu</li>
+                <li>Le jeu est chronométré</li>
+            </ul>
+        </div>
+        <br><br>
+        <table class="tableParamPicture">
+            <tr>
+                <td class="tableParamPictureTd">
+                    <h3>Gestion des images:</h3>
+                </td> 
+                <td class="tableParamPictureTd">
+                    <div>
+                        <button class="button_pictures" onclick="location.href='../src/pictures.php'">Images</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
     </div>
-    <!--</form>-->
 
     <div id="tabGame" class="col-lg-6">
         <div class="row bloc_title col-lg-12">
@@ -129,10 +137,7 @@ if(isset($_POST["resetParam"]))
                 <p class="title-countDown">Compteur :</p>
             </div>
         </div>
-        <?php if(!empty($donneees)) { 
-            $array = array_merge($donneees, $donneees);
-            shuffle($array);
-        ?>
+        <?php if(!empty($donneees)) { ?>
         <table id="3" class="memory_game_with_bdd tree gameBord">
             <?php for ($k = 0; $k < count($array); $k++) {
                 $img=base64_encode($array[$k]['bin']);

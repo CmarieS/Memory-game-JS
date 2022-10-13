@@ -6,10 +6,13 @@
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
 </heah>
-
-
 <body>
-    <button id="close_button" class="close_button col-lg-1" onclick="selectShowDisplay()">-</button>
+    <div class="col-lg-2">
+            <button id="close_button" class="close_button col-lg-1" onclick="selectShowDisplay()">-</button>
+    </div>
+    <div class="col-lg-12 title_game">
+            <p>Memory</p>
+    </div>
     <?php
     $connexion = false;
     try {

@@ -4,13 +4,13 @@ include('../datas/requetes.php');
 
 if (isset($_POST["addPictures"])) {
     $categorieId = $_POST['categorie'];
-    //echo "<script>alert($categorieId)</script>";
     $countfiles = count($_FILES['picture']['name']);
     for($i=0;$i<$countfiles;$i++){
-    $req = $pdo->prepare("insert into game_pictures(name,size,type,category_id,bin) values(?,?,?,?,?)");
+    $req = $pdo->prepare("insert into game_pictures(name,size,type,category_id,bin,url) values(?,?,?,?,?,?)");
     $exec = $req->execute(array(
         $_FILES["picture"]["name"][$i], $_FILES["picture"]["size"][$i],
-        $_FILES["picture"]["type"][$i], $_POST["categorie"], file_get_contents($_FILES["picture"]["tmp_name"][$i])
+        $_FILES["picture"]["type"][$i], $_POST["categorie"], file_get_contents($_FILES["picture"]["tmp_name"][$i]), 
+        $_FILES["picture"]["tmp_name"][$i]
     ));
     }
     header("Refresh:1");

@@ -58,6 +58,13 @@
   transition: transform 0.2s;
 }
 
+.title_game
+{
+  color: white;
+  text-align: center;
+  font-size:2em;
+}
+
 .back_img {
   transform: rotateY(180deg);
 }
@@ -75,18 +82,10 @@
   vertical-align: top;
 }
 .bloc_title .bloc_pair p {
-  padding-top: 5%;
+  padding-top: 6%;
 }
 .bloc_title .bloc_countDown p {
-  padding-top: 11%;
-}
-.bloc_title .bloc_pair .title_pair,
-.bloc_title .bloc_countDown .title_countDown {
-  width: 30%;
-}
-.bloc_title .bloc_pair #pair,
-.bloc_title .bloc_countDown #countDown {
-  width: 40%;
+  padding-top: 6%;
 }
 
 #bloc_end button {
@@ -101,10 +100,12 @@
 .selectGame .select
 {
   z-index: 1 !important;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 .selectGame .selectDisplay {
   display: none;
 }
+.selectGame .select li { color: white}
 
 .selectGame .select .title,
 .selectGame .select .tableParamTd h3,
@@ -118,21 +119,23 @@
   color: white;
 }
 
-.selectGame .select .tableParam tr .tableParamTd
-{
-  padding-left:2%;
-}
-.selectGame .select .tableParamPictureTd
-{
-  padding-left:5%;
-}
 .selectGame .select .tableParam tr .tableParamTdButtom
 {
   padding-left: 5%;
-  padding-right: 5%;
+  padding-right: 24%;
 }
 
-
+.selectGame .select .tableParamPictureTd div , .selectGame .select .tableParam tr .tableParamTdButtom div
+{
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.selectGame .select .tableParamPictureTd .button_pictures
+{
+    padding: 0;
+    border: none;
+    background: none;
+    color: grey;
+}
 .container .addPictures h1,
 .container .deletePictures h1 {
   text-align: center;
