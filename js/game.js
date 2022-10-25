@@ -126,7 +126,6 @@ function countdown(elementName, minutes, seconds) {
                 {
                     setTimeout(updateTimer, time.getUTCMilliseconds() + 500);
                 }
-                console.log(element.innerText);
                 if(element.innerText == "0:01")
                 {
                     setTimeout(end,1000)
