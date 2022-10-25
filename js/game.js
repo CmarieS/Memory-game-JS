@@ -1,4 +1,10 @@
-function buttonSelect(paramTab,idTable,srcImageFirst) {
+
+function buttonSelect(paramTab,idTable) {
+    if(idTable == 4)
+    {
+        document.getElementById("3").style.display = "none";
+        document.getElementById("nextGame").style.display = "none";
+    }
     document.getElementById("winContainer").style.display = "none";
     if(document.getElementById("bloc_countDown").lastChild.innerHTML != "")
     {
@@ -9,7 +15,6 @@ function buttonSelect(paramTab,idTable,srcImageFirst) {
     }
     var memory_car_num = document.getElementsByClassName("memory_card");
     for (let index = 0; index < memory_car_num.length; index++) {
-        console.log(memory_car_num[index].classList.contains("flip"));
         if(memory_car_num[index].classList.contains("flip"))
         {
             memory_car_num[index].classList.remove("flip");
@@ -17,7 +22,6 @@ function buttonSelect(paramTab,idTable,srcImageFirst) {
     }
     // Récupération de l'index du <option> choisi pour la selection du plateau
     select_gameBord = document.getElementById(idTable);
-    //choice_game = select_gameBord.value;  
 
     // Récupération de l'index du <option> choisi pour les images
     select_picture = document.getElementById("select_picture");
@@ -84,10 +88,10 @@ function gameWithNoBdd(paramtab,idTable)
         }
 }
 function buttonReload(){
-
     document.getElementById("winContainer").style.display = "none";
     document.getElementById("blocGameover").style.display = "none";
-    document.getElementById("button_select").style.display = "block";
+    document.getElementById("confirmParam").style.display = "block";
+    document.getElementById("nextGame").style.display = "none";
     window.location.reload();
 }
 function end()
@@ -162,11 +166,11 @@ function pair(idTable)
     {
         timer = 120000;
         countDown = 2;
-        document.getElementById("pair").innerHTML = "6";
-            
-
+        document.getElementById("pair").innerHTML = "6";   
     }
-    setTimeout(end, timer);
+    setTimeout(end, timer); 
     countdown("bloc_countDown", countDown, 0);
-    document.getElementById("button_select").style.display = "none";
+    document.getElementById("confirmParam").style.display = "none";
 }
+
+

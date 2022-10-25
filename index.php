@@ -5,6 +5,7 @@
     <script src="js/game.js"></script>
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </heah>
 <body>
     <div class="col-lg-2">
@@ -30,5 +31,4 @@
 </body>
 
 </html>
-<script src="js/flip.js"></script>
 <script src="js/fireEndGame.js"></script>

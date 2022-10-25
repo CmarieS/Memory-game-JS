@@ -100,7 +100,7 @@
 .selectGame .select
 {
   z-index: 1 !important;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgb(192,192,192,0.5)
 }
 .selectGame .selectDisplay {
   display: none;
@@ -125,17 +125,6 @@
   padding-right: 24%;
 }
 
-.selectGame .select .tableParamPictureTd div , .selectGame .select .tableParam tr .tableParamTdButtom div
-{
-  background-color: rgba(255, 255, 255, 0.5);
-}
-.selectGame .select .tableParamPictureTd .button_pictures
-{
-    padding: 0;
-    border: none;
-    background: none;
-    color: grey;
-}
 .container .addPictures h1,
 .container .deletePictures h1 {
   text-align: center;
@@ -179,8 +168,8 @@ body {
   padding: 0;
   height: 100%;
   width: 100%;
-  overflow: hidden;
   background-color: #292929;
+  overflow-y: scroll;
 }
 #winContainer {
   background-color: transparent;
@@ -427,4 +416,14 @@ body {
 .memory_game_with_bdd {
   perspective: 1000px;
   margin-top: 2%;
+}
+.nextGame
+{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background-color: white;
+  border: solid black;
+  z-index: 1000;
 }

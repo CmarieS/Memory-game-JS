@@ -1,14 +1,13 @@
 
-let memory_card = document.querySelectorAll('.memory_card');
-let hasFlippedCard = false;
-let lockBoard = false;
-let firstCard, secondCard;
+var memory_card = document.querySelectorAll('.memory_card');
+var hasFlippedCard = false;
+var lockBoard = false;
+var firstCard, secondCard;
 
 function flipCard() {
     if (lockBoard) return;
     if (this === firstCard) return;
     this.classList.add('flip');
-
     if (!hasFlippedCard) {
         hasFlippedCard = true;
         firstCard = this;
@@ -31,7 +30,15 @@ function disableCards() {
     var new_value = pair_text - 1;
     document.getElementById("pair").innerHTML = new_value;
     if (new_value == "0") {
-        document.getElementById("winContainer").style.display = "block";
+        if(memory_card.length == 8)
+        {
+            document.getElementById("nextGame").style.display = "block";
+        }
+        else
+        {
+            document.getElementById("winContainer").style.display = "block";
+        }
+        
     }
     resetBoard();
 }

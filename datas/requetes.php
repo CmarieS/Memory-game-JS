@@ -9,5 +9,3 @@ $countPictures = $pictures->rowCount();
 
 $bin = $pdo->query("SELECT * FROM game_pictures LIMIT 4");
 $donnees = $bin->fetchAll();
-
-
