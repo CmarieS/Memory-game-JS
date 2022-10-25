@@ -119,10 +119,18 @@ function countdown(elementName, minutes, seconds) {
             time = new Date(msLeft);
             hours = time.getUTCHours();
             mins = time.getUTCMinutes();
-            element.innerHTML = (hours ? hours + ':' + twoDigits(mins) : mins) + ':' + twoDigits(time.getUTCSeconds());
-            if (document.getElementById("winContainer").style.display != "block")
+            if(document.getElementById("pair").innerText != 0)
             {
-                setTimeout(updateTimer, time.getUTCMilliseconds() + 500);
+                element.innerHTML = (hours ? hours + ':' + twoDigits(mins) : mins) + ':' + twoDigits(time.getUTCSeconds());
+                if (document.getElementById("winContainer").style.display != "block")
+                {
+                    setTimeout(updateTimer, time.getUTCMilliseconds() + 500);
+                }
+                console.log(element.innerText);
+                if(element.innerText == "0:01")
+                {
+                    setTimeout(end,1000)
+                }
             }
         }
     }
@@ -157,18 +165,17 @@ function pair(idTable)
     var countDown = 0;
     if (idTable == 3)
     {
-        timer = 60000;
+        //timer = 60000;
         countDown = 1;
         document.getElementById("pair").innerHTML = "4";
             
     }
     else if (idTable == 4)
     {
-        timer = 120000;
+        //timer = 120000;
         countDown = 2;
         document.getElementById("pair").innerHTML = "6";   
     }
-    setTimeout(end, timer); 
     countdown("bloc_countDown", countDown, 0);
     document.getElementById("confirmParam").style.display = "none";
 }
