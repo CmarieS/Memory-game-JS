@@ -21,45 +21,33 @@ background-position: top center;height: 100%;'>
     <?php  }
     } ?>
     <div id="select" class="select col-lg-6">
-            <h1 class="title col-lg-11">Paramètres:</h1>
-        <br>
-        <form id="formTabParam">
-            <table class="tableParam">
-                <tr>
-                    <td class="tableParamTd">
-                        <h3>Sélection de la catégorie d'images: </h3>
-                        <select name="select_picture" id="select_picture" class="select_picture">
-                            <?php if(isset($_SESSION['select_pictureId']))
-                            {
-                                ?> <option value="<?php echo $_SESSION['select_pictureId']?>|<?php echo $_SESSION['select_pictureName']?>"> <?php echo $_SESSION['select_pictureName'] ?></option> <?php 
-                            }
-                            else { ?>
-                                <option value="null">Sélectionner vos images</option>
-                            <?php } ?>
-                        <?php
-                        foreach ($categories as $result) {
-                            ?> <option value="<?php echo $result["id"] ?>|<?php echo $result["name"] ?>"><?php echo $result["name"] ?></option>
-                        <?php
-                        } ?>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr class="tableParamTrButtom">
-                    <td class="tableParamTdButtom">
-                        <div>
-                            <button type="button" id="confirmParam" name="confirmParam" class="confirmParam" onclick="buttonSelect(0,3)">Démarrer</button>
-                            <button type="button" id="resetParam" name="resetParam" class="resetParam" onclick="buttonReload()">Réinitialiser</button>
-                        </div>
-                    </td>
-                </tr>
-            </table>   
-        <br>
+    <h1 class="title col-lg-11">Paramètres:</h1>
+    <br>
+    <form id="formTabParam" class="formTabParam">
+        <div class="col-lg-12">
+            <h3>Sélection de la catégorie d'images: </h3>
+            <select name="select_picture" id="select_picture" class="select_picture">
+                <?php if(isset($_SESSION['select_pictureId']))
+                {
+                    ?> <option value="<?php echo $_SESSION['select_pictureId']?>|<?php echo $_SESSION['select_pictureName']?>"> <?php echo $_SESSION['select_pictureName'] ?></option> <?php 
+                }
+                else { ?>
+                    <option value="null">Sélectionner vos images</option>
+                <?php } ?>
+            <?php
+            foreach ($categories as $result) {
+                ?> <option value="<?php echo $result["id"] ?>|<?php echo $result["name"] ?>"><?php echo $result["name"] ?></option>
+            <?php
+            } ?>
+            </select>
+            <button type="button" id="confirmParam" name="confirmParam" class="confirmParam" onclick="buttonSelect(0,3)">Démarrer</button>
+            <button type="button" id="resetParam" name="resetParam" class="resetParam" onclick="buttonReload()">Réinitialiser</button>
+            
+        </div>  
+    <br>
     </form>
     <br>
-        <div>
+        <div class="bloc_rules">
             <h1 class="title col-lg-11">Instructions:</h1>
             <ul>
                 <li>Sélectionner les images souhaitées puis démarrer</li>
@@ -69,18 +57,10 @@ background-position: top center;height: 100%;'>
             </ul>
         </div>
         <br><br>
-        <table class="tableParamPicture">
-            <tr>
-                <td class="tableParamPictureTd">
-                    <h3>Gestion des images:</h3>
-                </td> 
-                <td class="tableParamPictureTd">
-                    <div>
-                        <button class="button_pictures" onclick="location.href='../src/pictures.php'">Images</button>
-                    </div>
-                </td>
-            </tr>
-        </table>
+        <div class="col-lg-12 buttonPicture">
+            <h3>Gestion des images:</h3>
+            <button class="button_pictures" onclick="location.href='../src/pictures.php'">Images</button>
+        </div>
     </div>
     <div id="tabGame" class="col-lg-6">
         <div class="row bloc_title col-lg-12">

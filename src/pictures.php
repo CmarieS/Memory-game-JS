@@ -6,11 +6,10 @@ if (isset($_POST["addPictures"])) {
     $categorieId = $_POST['categorie'];
     $countfiles = count($_FILES['picture']['name']);
     for($i=0;$i<$countfiles;$i++){
-    $req = $pdo->prepare("insert into game_pictures(name,size,type,category_id,bin,url) values(?,?,?,?,?,?)");
+    $req = $pdo->prepare("insert into game_pictures(name,size,type,category_id,bin) values(?,?,?,?,?)");
     $exec = $req->execute(array(
         $_FILES["picture"]["name"][$i], $_FILES["picture"]["size"][$i],
-        $_FILES["picture"]["type"][$i], $_POST["categorie"], file_get_contents($_FILES["picture"]["tmp_name"][$i]), 
-        $_FILES["picture"]["tmp_name"][$i]
+        $_FILES["picture"]["type"][$i], $_POST["categorie"], file_get_contents($_FILES["picture"]["tmp_name"][$i])
     ));
     }
     header("Refresh:1");
@@ -29,13 +28,8 @@ if (isset($_POST["deletePictures"])) {
     header("Refresh:1");
 }
 if (isset($_POST["displayPictures"])) {
-    session_start(); // pour pouvoir utiliser les sessions
     $category_explode = explode('|', $_POST["displayCategorie"]);
-    $_SESSION['displayCategorieId'] = $category_explode[0];
-    $_SESSION['displayCategorieName'] = $category_explode[1];
-    $pictures = array();
     $categoryIdDisplay = $category_explode[0];
-    $countPictures = 0;
     if($categoryIdDisplay == "null")
     {
         $sqlPictures = "SELECT * FROM game_pictures";
@@ -44,6 +38,13 @@ if (isset($_POST["displayPictures"])) {
     }
     else
     {
+        session_start(); // pour pouvoir utiliser les sessions
+        
+        $_SESSION['displayCategorieId'] = $category_explode[0];
+        $_SESSION['displayCategorieName'] = $category_explode[1];
+        $pictures = array();
+        
+        $countPictures = 0;
         $picturesByIdSql = $pdo->prepare("SELECT * FROM game_pictures where category_id = :category_id");
         $picturesByIdSql->execute(['category_id' => $categoryIdDisplay]); 
         $pictures = $picturesByIdSql->fetchAll();
@@ -97,14 +98,12 @@ if (isset($_POST["displayPictures"])) {
                     <select name="displayCategorie">
                         <?php if(isset($_SESSION['displayCategorieId']))
                         {
-                            ?> <option value="<?php echo $_SESSION['displayCategorieId']?>|<?php echo $_SESSION['displayCategorieName']?>"> <?php echo $_SESSION['displayCategorieName'] ?></option> <?php 
+                            unset($categories[$_SESSION['displayCategorieId']]);
+                            ?><option value="<?php echo $_SESSION['displayCategorieId']?>|<?php echo $_SESSION['displayCategorieName']?>"> <?php echo $_SESSION['displayCategorieName'] ?></option> <?php 
                         }
-                        else { ?>
-                            <option value="null">Choix de la catégorie</option>
-                        <?php } ?><?php
-                        foreach ($categories as $category) {
-                        ?> <option value="<?php echo $category["id"] ?>|<?php echo $category["name"] ?>"><?php echo $category["name"] ?></option>
-                        <?php
+                        ?><option value="null">Choix de la catégorie</option>
+                        <?php foreach ($categories as $category) {
+                            ?><option value="<?php echo $category["id"] ?>|<?php echo $category["name"] ?>"><?php echo $category["name"] ?></option><?php   
                         } ?>
                     </select>
                     <button type="submit" name="displayPictures">Afficher</button>

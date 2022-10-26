@@ -108,21 +108,15 @@
 .selectGame .select li { color: white}
 
 .selectGame .select .title,
-.selectGame .select .tableParamTd h3,
-.selectGame .select .tableParamPictureTd h3,
 .addPictures h1,
+.select .formTabParam h3,
+.buttonPicture h3,
 .deletePictures h1,
 .addPictures_form label,
 .addPictures_form .inputPictures,
 .deletePictures_form label,
 .deletePictures_form p {
   color: white;
-}
-
-.selectGame .select .tableParam tr .tableParamTdButtom
-{
-  padding-left: 5%;
-  padding-right: 24%;
 }
 
 .container .addPictures h1,
