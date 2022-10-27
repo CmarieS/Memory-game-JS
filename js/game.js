@@ -9,7 +9,7 @@ function buttonSelect(paramTab,idTable) {
     if(document.getElementById("bloc_countDown").lastChild.innerHTML != "")
     {
         document.getElementById("bloc_countDown").removeChild(document.getElementById("bloc_countDown").lastChild);
-        var e = document.createElement("div");
+        var e = document.createElement("p");
         e.setAttribute('id','countdown');
         document.getElementById("bloc_countDown").appendChild(e);
     }

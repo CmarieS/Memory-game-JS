@@ -81,12 +81,6 @@
   display: inline-block;
   vertical-align: top;
 }
-.bloc_title .bloc_pair p {
-  padding-top: 6%;
-}
-.bloc_title .bloc_countDown p {
-  padding-top: 6%;
-}
 
 #bloc_end button {
   margin-left: 47%;
@@ -99,17 +93,22 @@
 }
 .selectGame .select
 {
-  z-index: 1 !important;
+  background-color: rgb(192,192,192,0.5),
+}
+
+.selectGame .select , .bloc_title .bloc_pair , .bloc_title .bloc_countDown
+{
   background-color: rgb(192,192,192,0.5)
+}
+.selectGame .select
+{
+  z-index: 1 !important;
 }
 .selectGame .selectDisplay {
   display: none;
 }
-.selectGame .select li { color: white}
 
-.selectGame .select .title,
 .addPictures h1,
-.select .formTabParam h3,
 .buttonPicture h3,
 .deletePictures h1,
 .addPictures_form label,
@@ -411,6 +410,14 @@ body {
   perspective: 1000px;
   margin-top: 2%;
 }
+.formTabParam button
+{
+  background-color: white;
+  border-radius: 30px;
+  border-color: grey;
+  box-shadow: none;
+  width: 20%;
+}
 .nextGame
 {
   position: absolute;
@@ -418,6 +425,47 @@ body {
   left: 50%;
   transform: translate(-50%,-50%);
   background-color: white;
-  border: solid black;
+  border-color: grey;
+  border-radius: 30px;
   z-index: 1000;
+  width: 32%;
+  height: 20%;
+}
+
+.nextGame p
+{
+  text-align: center;
+}
+
+/* titres */
+
+.select .title , .bloc_rules .title , .title_game , .formTabParam h3 ,
+.selectGame .select li , .bloc_title .bloc_pair .title_pair , .bloc_title .bloc_pair #pair , .bloc_title .bloc_countDown .title-countDown , .bloc_title .bloc_countDown #countdown
+{
+  color: white;
+}
+
+.title_game
+{
+  font-size: 3rem;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.select .title , .bloc_rules .title
+{
+  font-size: 2rem;
+  font-family: Helvetica, Arial, sans-serif;
+
+}
+
+.formTabParam h3 , .bloc_title .bloc_pair .title_pair , .bloc_title .bloc_pair #pair , .bloc_title .bloc_countDown .title-countDown , .bloc_title .bloc_countDown #countdown
+{
+  font-size: 1.5rem;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.selectGame .select li , .bloc_title .bloc_pair .title_pair , .bloc_title .bloc_pair #pair , .bloc_title .bloc_countDown .title-countDown , .bloc_title .bloc_countDown #countdown
+{
+  font-size: 1rem;
+  font-family: Helvetica, Arial, sans-serif;
 }

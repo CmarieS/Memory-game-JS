@@ -6,20 +6,15 @@ $countDonneees = 0;
 ?>
 <?php 
 $array= [];
-if(!empty($donneees)) { ?> 
-<div class="row selectGame col-lg-12" style='background:url(data:<?php echo $donneees[1]["type"]; ?>;charset=utf8;base64,<?php echo $imgBackground; ?>);background-repeat: no-repeat;background-size: 100% 100%;
-background-position: top center;height: 100%;'>
-<?php } else {
     $today = date("H");
-        if($today <= 12)
-        { ?>
-            <div class="row selectGame col-lg-12" style='background:url(../../ressources/days.png);background-repeat: no-repeat;background-size: 100% 100%;
-            background-position: top center;height: 100%;'>
-        <?php } else { ?>
-            <div class="row selectGame col-lg-12" style='background:url(../../ressources/night.png);background-repeat: no-repeat;background-size: 100% 100%;
-            background-position: top center;height: 100%;'>
-    <?php  }
-    } ?>
+    if($today <= 12)
+    { ?>
+        <div class="row selectGame col-lg-12" style='background:url(../../ressources/days.png);background-repeat: no-repeat;background-size: 100% 100%;
+        background-position: top center;height: 100%;'>
+    <?php } else { ?>
+        <div class="row selectGame col-lg-12" style='background:url(../../ressources/night.png);background-repeat: no-repeat;background-size: 100% 100%;
+        background-position: top center;height: 100%;'>
+    <?php }?>
     <div id="select" class="select col-lg-6">
     <h1 class="title col-lg-11">Paramètres:</h1>
     <br>
@@ -57,10 +52,10 @@ background-position: top center;height: 100%;'>
             </ul>
         </div>
         <br><br>
-        <div class="col-lg-12 buttonPicture">
+        <!--<div class="col-lg-12 buttonPicture">
             <h3>Gestion des images:</h3>
             <button class="button_pictures" onclick="location.href='../src/pictures.php'">Images</button>
-        </div>
+        </div>-->
     </div>
     <div id="tabGame" class="col-lg-6">
         <div class="row bloc_title col-lg-12">
@@ -74,7 +69,7 @@ background-position: top center;height: 100%;'>
         </div>
         <table id="3" class="memory_game_with_bdd tree gameBord"></table>
         <div id="nextGame" class="nextGame" style="display:none;">
-            <p>Plateau suivant :</p><br><br>
+            <p>Plateau suivant :</p>
             <form id="formNextTab">
                 <button type="button" id="nextGame" name="nextGame" class="nextGame" onclick="buttonSelect(0,4)">Suivant</button>
             </form>

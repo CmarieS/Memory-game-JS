@@ -9,7 +9,7 @@
 </heah>
 <body>
     <div class="col-lg-2">
-            <button id="close_button" class="close_button col-lg-1" onclick="selectShowDisplay()">-</button>
+        <button id="close_button" class="close_button col-lg-1" onclick="selectShowDisplay()">-</button>
     </div>
     <div class="col-lg-12 title_game">
             <p>Memory</p>
