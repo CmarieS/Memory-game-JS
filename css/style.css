@@ -410,12 +410,15 @@ body {
   perspective: 1000px;
   margin-top: 2%;
 }
-.formTabParam button
+.formTabParam button , .formTabParam .select_picture
 {
   background-color: white;
   border-radius: 30px;
   border-color: grey;
   box-shadow: none;
+}
+.formTabParam button
+{
   width: 20%;
 }
 .nextGame
@@ -428,13 +431,24 @@ body {
   border-color: grey;
   border-radius: 30px;
   z-index: 1000;
-  width: 32%;
+  width: 50%;
   height: 20%;
+  float:none;
+  clear: both;
+
 }
 
 .nextGame p
 {
   text-align: center;
+  font-size: 2.5vw;
+}
+
+.nextGame form button
+{
+  width: 28%;
+  height: 30%;
+  font-size: 2vw;
 }
 
 /* titres */
