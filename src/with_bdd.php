@@ -16,29 +16,26 @@ $array= [];
         background-position: top center;height: 100%;'>
     <?php }?>
     <div id="select" class="select col-lg-6">
-    <h1 class="title col-lg-11">Paramètres:</h1>
+    <h1 class="title">Paramètres:</h1>
     <br>
     <form id="formTabParam" class="formTabParam">
-        <div class="col-lg-12">
-            <h3>Sélection de la catégorie d'images: </h3>
-            <select name="select_picture" id="select_picture" class="select_picture">
-                <?php if(isset($_SESSION['select_pictureId']))
-                {
-                    ?> <option value="<?php echo $_SESSION['select_pictureId']?>|<?php echo $_SESSION['select_pictureName']?>"> <?php echo $_SESSION['select_pictureName'] ?></option> <?php 
-                }
-                else { ?>
-                    <option value="null">Sélectionner vos images</option>
-                <?php } ?>
-            <?php
-            foreach ($categories as $result) {
-                ?> <option value="<?php echo $result["id"] ?>|<?php echo $result["name"] ?>"><?php echo $result["name"] ?></option>
-            <?php
-            } ?>
-            </select>
-            <button type="button" id="confirmParam" name="confirmParam" class="confirmParam" onclick="buttonSelect(0,3)">Démarrer</button>
-            <button type="button" id="resetParam" name="resetParam" class="resetParam" onclick="buttonReload()">Réinitialiser</button>
-            
-        </div>  
+    <h3>Sélection de la catégorie d'images: </h3>
+    <select name="select_picture" id="select_picture" class="select_picture">
+        <?php if(isset($_SESSION['select_pictureId']))
+        {
+            ?> <option value="<?php echo $_SESSION['select_pictureId']?>|<?php echo $_SESSION['select_pictureName']?>"> <?php echo $_SESSION['select_pictureName'] ?></option> <?php 
+        }
+        else { ?>
+            <option value="null">Sélectionner vos images</option>
+        <?php } ?>
+    <?php
+    foreach ($categories as $result) {
+        ?> <option value="<?php echo $result["id"] ?>|<?php echo $result["name"] ?>"><?php echo $result["name"] ?></option>
+    <?php
+    } ?>
+    </select>
+    <button type="button" id="confirmParam" name="confirmParam" class="confirmParam" onclick="buttonSelect(0,3)">Démarrer</button>
+    <button type="button" id="resetParam" name="resetParam" class="resetParam" onclick="buttonReload()">Réinitialiser</button>   
     <br>
     </form>
     <br>
@@ -69,10 +66,20 @@ $array= [];
         </div>
         <table id="3" class="memory_game_with_bdd tree gameBord"></table>
         <div id="nextGame" class="nextGame" style="display:none;">
-            <p>Plateau suivant :</p>
-            <form id="formNextTab">
-                <button type="button" id="nextGame" name="nextGame" class="nextGame" onclick="buttonSelect(0,4)">Suivant</button>
-            </form>
+            <div class="col-lg-12">
+                <p>Plateau suivant :</p>
+            </div>
+            <div>
+                <div class="next NextimgMemoryA">
+                    <img src="../ressources/memory.png" alt="">
+                </div>
+                <form class="next" id="formNextTab">
+                    <button type="button" id="nextGame" name="nextGame" class="nextGame" onclick="buttonSelect(0,4)">Suivant</button>
+                </form>
+                <div class="next NextimgMemoryB">
+                    <img src="../ressources/memory.png" alt="">
+                </div>
+            </div>
         </div>
         <table id="4" class="memory_game_with_bdd four gameBord"></table>
     </div>

@@ -3,7 +3,7 @@ function buttonSelect(paramTab,idTable) {
     if(idTable == 4)
     {
         document.getElementById("3").style.display = "none";
-        document.getElementById("nextGame").style.display = "none";
+        document.getElementById("nextGame").style.display = "block";
     }
     document.getElementById("winContainer").style.display = "none";
     if(document.getElementById("bloc_countDown").lastChild.innerHTML != "")
@@ -90,9 +90,9 @@ function gameWithNoBdd(paramtab,idTable)
 function buttonReload(){
     document.getElementById("winContainer").style.display = "none";
     document.getElementById("blocGameover").style.display = "none";
-    document.getElementById("confirmParam").style.display = "block";
     document.getElementById("nextGame").style.display = "none";
     window.location.reload();
+    //document.getElementById("confirmParam").style.display = "block";
 }
 function end()
 {
