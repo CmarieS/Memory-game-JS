@@ -3,7 +3,7 @@ function buttonSelect(paramTab,idTable) {
     if(idTable == 4)
     {
         document.getElementById("3").style.display = "none";
-        document.getElementById("nextGame").style.display = "block";
+        document.getElementById("nextGame").style.display = "none";
     }
     document.getElementById("winContainer").style.display = "none";
     if(document.getElementById("bloc_countDown").lastChild.innerHTML != "")
